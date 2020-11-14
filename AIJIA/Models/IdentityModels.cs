@@ -20,6 +20,18 @@ namespace AIJIA.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        public virtual DbSet<Mark> Marks { get; set; }
+        public virtual DbSet<TypeArticle> TypeArticles { get; set; }
+        public virtual DbSet<Comment> Comments { get; set; }
+        public virtual DbSet<Image> Images { get; set; }
+        public virtual DbSet<Delivery> Deliveries { get; set; }
+        public virtual DbSet<ModelDelivery> ModelDeliveries { get; set; }
+        public virtual DbSet<Provider> Providers { get; set; }
+        public virtual DbSet<Article> Articles { get; set; }
+        public virtual DbSet<Order> Orders { get; set; }
+        public virtual DbSet<StatusOrder> StatusOrders { get; set; }
+        public virtual DbSet<User> Users { get; set; }
+
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {

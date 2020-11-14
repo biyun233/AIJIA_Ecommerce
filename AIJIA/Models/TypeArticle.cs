@@ -1,9 +1,12 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 namespace AIJIA.Models
 {
     public class TypeArticle
     {
-        public int IdType { get; set; }
+        [Key]
+        public int ID { get; set; }
         public string Name { get; set; }
     }
 }
