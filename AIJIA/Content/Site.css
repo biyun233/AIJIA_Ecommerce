@@ -1,14 +1,74 @@
-﻿body {
-    padding-top: 50px;
+﻿.header {
+    height: 100px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 1;
+}
+
+.message {
+    height: 25px;
+    color: #FCF9F9;
+    background-color: #B490B9;
+    text-align: center;
+}
+
+    .message p {
+        vertical-align: middle;
+    }
+
+.logobar {
+    height: 40px;
+    background-color: white;
+}
+
+.menu {
+    background-color: #B490B9;
+}
+
+.no-border {
+    border: 0;
+    border-bottom: 1px solid;
+    box-shadow: none;
+    border-radius: 0;
+}
+
+.collect > li > a {
+    color: #FCF9F9;
+}
+
+    .collect > li > a:hover,
+    .collect > li > a:focus {
+        color: #B490B9;
+    }
+
+body {
+    padding-top: 100px;
     padding-bottom: 20px;
 }
 
-/* Set padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+.product-container {
+    z-index: -1;
+    padding-top: 30px;
+    padding-bottom: 20px;
 }
 
+.product-item {
+    text-align: center;
+}
+
+    .product-item button {
+        background-color: #B490B9;
+        border: 0;
+        color: #FCF9F9;
+        border-radius: 10px;
+        height: 20px;
+    }
+
+.content {
+    padding-left: 50px;
+    padding-right: 30px;
+}
 /* Override the default bootstrap behavior where horizontal description lists 
    will truncate terms that are too long to fit in the left column 
 */
@@ -22,3 +82,5 @@ select,
 textarea {
     max-width: 280px;
 }
+
+©
