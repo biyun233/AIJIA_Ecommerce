@@ -105,6 +105,8 @@ C:\Users\mamadoudiallo\source\repos\AIJIA\AIJIA\bin\System.Web.WebPages.Deployme
 C:\Users\mamadoudiallo\source\repos\AIJIA\AIJIA\bin\System.Web.WebPages.dll
 C:\Users\mamadoudiallo\source\repos\AIJIA\AIJIA\bin\System.Web.WebPages.Razor.dll
 C:\Users\mamadoudiallo\source\repos\AIJIA\AIJIA\bin\WebGrease.dll
+C:\Users\mamadoudiallo\source\repos\AIJIA\AIJIA\bin\EntityFramework.xml
+C:\Users\mamadoudiallo\source\repos\AIJIA\AIJIA\bin\EntityFramework.SqlServer.xml
 C:\Users\mamadoudiallo\source\repos\AIJIA\AIJIA\bin\Microsoft.Bcl.AsyncInterfaces.xml
 C:\Users\mamadoudiallo\source\repos\AIJIA\AIJIA\bin\Microsoft.Bcl.HashCode.xml
 C:\Users\mamadoudiallo\source\repos\AIJIA\AIJIA\bin\Microsoft.EntityFrameworkCore.xml
@@ -141,8 +143,6 @@ C:\Users\mamadoudiallo\source\repos\AIJIA\AIJIA\bin\System.Web.WebPages.Deployme
 C:\Users\mamadoudiallo\source\repos\AIJIA\AIJIA\bin\System.Web.WebPages.Razor.xml
 C:\Users\mamadoudiallo\source\repos\AIJIA\AIJIA\bin\Newtonsoft.Json.xml
 C:\Users\mamadoudiallo\source\repos\AIJIA\AIJIA\bin\Antlr3.Runtime.pdb
-C:\Users\mamadoudiallo\source\repos\AIJIA\AIJIA\bin\EntityFramework.xml
-C:\Users\mamadoudiallo\source\repos\AIJIA\AIJIA\bin\EntityFramework.SqlServer.xml
 C:\Users\mamadoudiallo\source\repos\AIJIA\AIJIA\bin\Microsoft.AspNet.Identity.Core.xml
 C:\Users\mamadoudiallo\source\repos\AIJIA\AIJIA\bin\Microsoft.AspNet.Identity.Owin.xml
 C:\Users\mamadoudiallo\source\repos\AIJIA\AIJIA\bin\Microsoft.AspNet.Identity.EntityFramework.xml
@@ -156,6 +156,8 @@ C:\Users\mamadoudiallo\source\repos\AIJIA\AIJIA\bin\Microsoft.Owin.Security.Twit
 C:\Users\mamadoudiallo\source\repos\AIJIA\AIJIA\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\mamadoudiallo\source\repos\AIJIA\AIJIA\bin\Microsoft.Owin.Security.OAuth.xml
 C:\Users\mamadoudiallo\source\repos\AIJIA\AIJIA\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\mamadoudiallo\source\repos\AIJIA\AIJIA\bin\fr\EntityFramework.resources.dll
+C:\Users\mamadoudiallo\source\repos\AIJIA\AIJIA\bin\fr\EntityFramework.SqlServer.resources.dll
 C:\Users\mamadoudiallo\source\repos\AIJIA\AIJIA\bin\fr\System.Net.Http.Formatting.resources.dll
 C:\Users\mamadoudiallo\source\repos\AIJIA\AIJIA\bin\fr\System.Web.Http.resources.dll
 C:\Users\mamadoudiallo\source\repos\AIJIA\AIJIA\bin\fr\System.Web.Http.WebHost.resources.dll
@@ -166,8 +168,6 @@ C:\Users\mamadoudiallo\source\repos\AIJIA\AIJIA\bin\fr\System.Web.Razor.resource
 C:\Users\mamadoudiallo\source\repos\AIJIA\AIJIA\bin\fr\System.Web.WebPages.resources.dll
 C:\Users\mamadoudiallo\source\repos\AIJIA\AIJIA\bin\fr\System.Web.WebPages.Deployment.resources.dll
 C:\Users\mamadoudiallo\source\repos\AIJIA\AIJIA\bin\fr\System.Web.WebPages.Razor.resources.dll
-C:\Users\mamadoudiallo\source\repos\AIJIA\AIJIA\bin\fr\EntityFramework.resources.dll
-C:\Users\mamadoudiallo\source\repos\AIJIA\AIJIA\bin\fr\EntityFramework.SqlServer.resources.dll
 C:\Users\mamadoudiallo\source\repos\AIJIA\AIJIA\bin\fr\Microsoft.AspNet.Identity.Core.resources.dll
 C:\Users\mamadoudiallo\source\repos\AIJIA\AIJIA\bin\fr\Microsoft.AspNet.Identity.Owin.resources.dll
 C:\Users\mamadoudiallo\source\repos\AIJIA\AIJIA\bin\fr\Microsoft.AspNet.Identity.EntityFramework.resources.dll

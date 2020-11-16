@@ -7,6 +7,9 @@ namespace AIJIA.Models
     {
         [Key]
         public int ID { get; set; }
+
+        [Required(ErrorMessage = "Le Nom de la Marque est Obligatoire !")]
+        [Display(Name = "Marque")]
         public string Name { get; set; }
     }
 }
