@@ -26,7 +26,8 @@ namespace AIJIA
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/Site.css",
-                       "~/Content/Admin/Admin.css"));
+                       "~/Content/Admin/Admin.css",
+                        "~/Content/Admin/Index.css"));
         }
     }
 }

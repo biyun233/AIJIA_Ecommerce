@@ -30,7 +30,7 @@ namespace AIJIA.Models
         public virtual DbSet<Article> Articles { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<StatusOrder> StatusOrders { get; set; }
-        public virtual DbSet<User> Userss { get; set; }
+        //public virtual DbSet<User> Userss { get; set; }
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)

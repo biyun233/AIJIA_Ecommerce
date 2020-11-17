@@ -14,10 +14,11 @@
     font-size: 20px;
 }
 
+
 a,
 a:hover,
 a:focus {
-    color: inherit;
+    color: #337ab7;
     text-decoration: none;
     transition: all 0.3s;
 }
@@ -33,10 +34,9 @@ a:focus {
     font-size: 18px;
     min-width: 190px;
     max-width: 250px;
-    background: #B490B9;
+    background: #A496A5;
     color: black;
     transition: all 0.3s;
-    //border-right: 1px solid black;
 }
 
 #sidebar .active {
@@ -47,13 +47,15 @@ a:focus {
     padding: 0px;
     padding-left: 10px;
     color: white;
+    margin-top: 16px;
     
 }
 
 #sidebar ul.components {
-    padding: 18px 0;
-    font-size: 20px;
-   // border-right: 1px solid black;
+    padding-top: 10px;
+    padding-left: 10px;
+    font-size: 16px;
+   
 
 }
 
@@ -67,18 +69,19 @@ a:focus {
     font-size: 1.1em;
     display: block;
     color: white;
+    background: #A496A5;
 }
 
 #sidebar ul li a:hover {
-    color: black;
-    background: #B490B9;
+    color: #B490B9;
+    background: white;
 }
 
 
 #sidebar ul li.active>a,
 a[aria-expanded="true"]{
     color: white;
-    background: #B490B9;
+    background: #A496A5;
 }
 
 a[data-toggle="collapse"]{
@@ -97,6 +100,7 @@ ul ul a {
     font-size: 0.9em !important;
     padding-left: 30px !important;
     background: #B490B9;
+    text-decoration: none;
 }
 
 #content {
@@ -105,5 +109,6 @@ ul ul a {
     min-height: 100vh;
     transition: all 0.3s;
 }
+
 
 

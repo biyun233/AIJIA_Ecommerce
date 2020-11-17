@@ -6,6 +6,7 @@
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+   
 </head>
 <body class="bodyStyle">
     <div class="aijia">AIJIA</div>
@@ -17,7 +18,7 @@
             <ul class="list-unstyled components">
                
                 <li>
-                    <a href="#menuAijia" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Commandes</a>
+                    <a href="#menuAijia" data-toggle="collapse" aria-expanded="false">Commandes</a>
                     <ul class="collapse list-unstyled" id="menuAijia">
                         <li>
                             <a href="#">Commandes</a>
@@ -34,13 +35,13 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="#menuAijia2" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Articles</a>
+                    <a href="#menuAijia2" data-toggle="collapse" aria-expanded="false">Articles</a>
                     <ul class="collapse list-unstyled" id="menuAijia2">
                         <li>
                             <a href="#">Articles</a>
                         </li>
                         <li>
-                            <a href="#">@Html.ActionLink("Marques", "Mark", "Mark")</a>
+                            @Html.ActionLink("Marques", "Index", "Marks")
                         </li>
                         <li>
                             <a href="#">Catégories</a>

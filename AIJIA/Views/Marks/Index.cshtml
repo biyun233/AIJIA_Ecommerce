@@ -1,0 +1,54 @@
+﻿@model IEnumerable<AIJIA.Models.Mark>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="row">
+    <button class="btn btnCreate">
+        @Html.ActionLink("Nouvelle Marque", "Create")
+    </button>
+</div>
+<div class="row container">
+    <div class="col-md-6">
+        <div class="">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col" class="text-center">ID</th>
+                        <th scope="col">@Html.DisplayNameFor(model => model.Name)</th>
+                        <th scope="col" class="text-center">Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+
+                        <tr>
+                            <th scope="row"> @Html.DisplayFor(modelItem => item.ID)</th>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </td>
+                            <td class="d-flex">
+                                <button class="btn buttonMargin">
+                                    @Html.ActionLink("Editer", "Edit", new { id = item.ID })
+                                </button>
+                                <button class="btn buttonMargin">
+                                    @Html.ActionLink("voir", "Details", new { id = item.ID })
+                                </button>
+                                <button class="btn buttonMargin">
+                                    @Html.ActionLink("Supprimer", "Delete", new { id = item.ID })
+                                </button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>       
+            </table>
+        </div>
+    </div>
+</div>
+
+
