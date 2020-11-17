@@ -185,9 +185,6 @@ C:\Users\mamadoudiallo\source\repos\AIJIA\AIJIA\obj\Debug\AIJIA.csproj.CoreCompi
 C:\Users\mamadoudiallo\source\repos\AIJIA\AIJIA\obj\Debug\AIJIA.csproj.CopyComplete
 C:\Users\mamadoudiallo\source\repos\AIJIA\AIJIA\obj\Debug\AIJIA.dll
 C:\Users\mamadoudiallo\source\repos\AIJIA\AIJIA\obj\Debug\AIJIA.pdb
-C:\Users\mamadoudiallo\source\repos\Aijia_Ecommerce\AIJIA\obj\Debug\AIJIA.csprojAssemblyReference.cache
-C:\Users\mamadoudiallo\source\repos\Aijia_Ecommerce\AIJIA\obj\Debug\AIJIA.dll
-C:\Users\mamadoudiallo\source\repos\Aijia_Ecommerce\AIJIA\obj\Debug\AIJIA.pdb
 C:\Users\mamadoudiallo\source\repos\Aijia_Ecommerce\AIJIA\bin\AIJIA.dll.config
 C:\Users\mamadoudiallo\source\repos\Aijia_Ecommerce\AIJIA\bin\AIJIA.dll
 C:\Users\mamadoudiallo\source\repos\Aijia_Ecommerce\AIJIA\bin\AIJIA.pdb
@@ -368,7 +365,10 @@ C:\Users\mamadoudiallo\source\repos\Aijia_Ecommerce\AIJIA\bin\fr\Microsoft.Owin.
 C:\Users\mamadoudiallo\source\repos\Aijia_Ecommerce\AIJIA\bin\fr\Microsoft.Owin.Security.Google.resources.dll
 C:\Users\mamadoudiallo\source\repos\Aijia_Ecommerce\AIJIA\bin\fr\Microsoft.Owin.Security.Twitter.resources.dll
 C:\Users\mamadoudiallo\source\repos\Aijia_Ecommerce\AIJIA\bin\fr\Microsoft.Owin.Security.MicrosoftAccount.resources.dll
-C:\Users\mamadoudiallo\source\repos\Aijia_Ecommerce\AIJIA\obj\Debug\AIJIA.csproj.CoreCompileInputs.cache
-C:\Users\mamadoudiallo\source\repos\Aijia_Ecommerce\AIJIA\obj\Debug\AIJIA.csproj.CopyComplete
+C:\Users\mamadoudiallo\source\repos\Aijia_Ecommerce\AIJIA\obj\Debug\AIJIA.csprojAssemblyReference.cache
 C:\Users\mamadoudiallo\source\repos\Aijia_Ecommerce\AIJIA\obj\Debug\AIJIA.Migrations.aijiaModels.resources
 C:\Users\mamadoudiallo\source\repos\Aijia_Ecommerce\AIJIA\obj\Debug\AIJIA.csproj.GenerateResource.cache
+C:\Users\mamadoudiallo\source\repos\Aijia_Ecommerce\AIJIA\obj\Debug\AIJIA.csproj.CoreCompileInputs.cache
+C:\Users\mamadoudiallo\source\repos\Aijia_Ecommerce\AIJIA\obj\Debug\AIJIA.csproj.CopyComplete
+C:\Users\mamadoudiallo\source\repos\Aijia_Ecommerce\AIJIA\obj\Debug\AIJIA.dll
+C:\Users\mamadoudiallo\source\repos\Aijia_Ecommerce\AIJIA\obj\Debug\AIJIA.pdb

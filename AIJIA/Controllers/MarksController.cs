@@ -89,6 +89,21 @@ namespace AIJIA.Controllers
             return View(mark);
         }
 
+        // Delete With Ajax
+        public JsonResult DeleteMark(int MarkID)
+        {
+            bool result = false;
+            Mark mark = db.Marks.Where(x => x.ID == MarkID).SingleOrDefault();
+            if(mark != null)
+            {
+                db.Marks.Remove(mark);
+                db.SaveChanges();
+                result = true;
+            }
+
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
         // GET: Marks/Delete/5
         public ActionResult Delete(int? id)
         {

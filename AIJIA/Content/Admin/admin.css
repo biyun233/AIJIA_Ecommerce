@@ -1,5 +1,4 @@
-﻿
-.bodyStyle {
+﻿.bodyStyle {
     top: 0px !important;
     padding-top: 0px;
     padding-bottom: 0px;
@@ -39,56 +38,53 @@ a:focus {
     transition: all 0.3s;
 }
 
-#sidebar .active {
-    margin-left: -250px;
-}
+    #sidebar .active {
+        margin-left: -250px;
+    }
 
-#sidebar .sidebar-header {
-    padding: 0px;
-    padding-left: 10px;
-    color: white;
-    margin-top: 16px;
-    
-}
+    #sidebar .sidebar-header {
+        padding: 0px;
+        padding-left: 10px;
+        color: white;
+        margin-top: 16px;
+    }
 
-#sidebar ul.components {
-    padding-top: 10px;
-    padding-left: 10px;
-    font-size: 16px;
-   
+    #sidebar ul.components {
+        padding-top: 10px;
+        padding-left: 10px;
+        font-size: 16px;
+    }
 
-}
+    #sidebar ul p {
+        color: black;
+        padding: 10px;
+    }
 
-#sidebar ul p {
-    color: black;
-    padding: 10px;
-}
+    #sidebar ul li a {
+        padding: 10px;
+        font-size: 1.1em;
+        display: block;
+        color: white;
+        background: #A496A5;
+    }
 
-#sidebar ul li a {
-    padding: 10px;
-    font-size: 1.1em;
-    display: block;
-    color: white;
-    background: #A496A5;
-}
-
-#sidebar ul li a:hover {
-    color: #B490B9;
-    background: white;
-}
+        #sidebar ul li a:hover {
+            color: #B490B9;
+            background: white;
+        }
 
 
-#sidebar ul li.active>a,
-a[aria-expanded="true"]{
-    color: white;
-    background: #A496A5;
-}
+    #sidebar ul li.active > a,
+    a[aria-expanded="true"] {
+        color: white;
+        background: #A496A5;
+    }
 
-a[data-toggle="collapse"]{
+a[data-toggle="collapse"] {
     position: relative;
 }
 
-.dropdown-toggle::after{
+.dropdown-toggle::after {
     display: block;
     position: relative;
     top: 50%;
@@ -109,6 +105,3 @@ ul ul a {
     min-height: 100vh;
     transition: all 0.3s;
 }
-
-
-

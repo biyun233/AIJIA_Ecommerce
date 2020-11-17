@@ -27,7 +27,7 @@
                     @foreach (var item in Model)
                     {
 
-                        <tr>
+                        <tr id="row_@item.ID">
                             <th scope="row"> @Html.DisplayFor(modelItem => item.ID)</th>
                             <td>
                                 @Html.DisplayFor(modelItem => item.Name)
@@ -36,19 +36,59 @@
                                 <button class="btn buttonMargin">
                                     @Html.ActionLink("Editer", "Edit", new { id = item.ID })
                                 </button>
-                                <button class="btn buttonMargin">
-                                    @Html.ActionLink("voir", "Details", new { id = item.ID })
+
+                                <button class="btn btn-danger" onclick="ConfirmDelete(@item.ID)">
+                                    @*@Html.ActionLink("Supprimer", "Delete", new { id = item.ID })*@
+                                    Supprimer
                                 </button>
-                                <button class="btn buttonMargin">
-                                    @Html.ActionLink("Supprimer", "Delete", new { id = item.ID })
-                                </button>
+
                             </td>
                         </tr>
                     }
-                </tbody>       
+                </tbody>
             </table>
         </div>
     </div>
 </div>
 
 
+<!-- Modal -->
+<div class="modal fade" id="ModalDelete" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">           
+            <div class="modal-body">
+                Êtes vous sûr de vouloir Supprimer la marque ?
+            </div>
+            <div class="modal-footer">
+                <button class="btn buttonMargin" data-dismiss="modal">NON</button>
+                <button href="#" class="btn buttonMargin" onclick="DeleteMark()">OUI</button>
+            </div>
+        </div>
+    </div>
+    <input type="hidden" id="hiddenMarkId"/>
+</div>
+
+
+
+@section scripts {
+    <script>
+        var ConfirmDelete = function (MarkID) {
+            $("#hiddenMarkId").val(MarkID);            
+            $("#ModalDelete").modal('show');
+        };
+
+        var DeleteMark = function () {
+            var markID = $("#hiddenMarkId").val();
+            console.log($("#hiddenMarkId").val(markID));
+            $.ajax({
+                type: "POST",
+                url: "/Marks/DeleteMark",
+                data: { MarkID: markID },
+                success: function (result) {
+                    $("#ModalDelete").modal('hide');
+                    $("#row_" + markID).remove(); 
+                }
+            })
+        };
+    </script>
+}
