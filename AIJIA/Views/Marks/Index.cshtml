@@ -27,23 +27,23 @@
                     @foreach (var item in Model)
                     {
 
-                        <tr id="row_@item.ID">
-                            <th scope="row"> @Html.DisplayFor(modelItem => item.ID)</th>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Name)
-                            </td>
-                            <td class="d-flex">
-                                <button class="btn buttonMargin">
-                                    @Html.ActionLink("Editer", "Edit", new { id = item.ID })
-                                </button>
+                    <tr id="row_@item.ID">
+                        <th scope="row"> @Html.DisplayFor(modelItem => item.ID)</th>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td class="d-flex">
+                            <button class="btn buttonMargin">
+                                @Html.ActionLink("Editer", "Edit", new { id = item.ID })
+                            </button>
 
-                                <button class="btn btn-danger" onclick="ConfirmDelete(@item.ID)">
-                                    @*@Html.ActionLink("Supprimer", "Delete", new { id = item.ID })*@
-                                    Supprimer
-                                </button>
+                            <button class="btn btn-danger buttonMargin" onclick="ConfirmDelete(@item.ID)">
+                                Supprimer
+                            </button>
 
-                            </td>
-                        </tr>
+                        </td>
+                       
+                    </tr>
                     }
                 </tbody>
             </table>

@@ -89,31 +89,21 @@ namespace AIJIA.Controllers
             return View(provider);
         }
 
-        // GET: Providers/Delete/5
-        public ActionResult Delete(int? id)
+        // Delete With Ajax
+        public JsonResult DeleteProvider(int ProviderID)
         {
-            if (id == null)
+            bool result = false;
+            Provider provider = db.Providers.Where(x => x.ID == ProviderID).SingleOrDefault();
+            if (provider != null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                db.Providers.Remove(provider);
+                db.SaveChanges();
+                result = true;
             }
-            Provider provider = db.Providers.Find(id);
-            if (provider == null)
-            {
-                return HttpNotFound();
-            }
-            return View(provider);
+
+            return Json(result, JsonRequestBehavior.AllowGet);
         }
 
-        // POST: Providers/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Provider provider = db.Providers.Find(id);
-            db.Providers.Remove(provider);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
 
         protected override void Dispose(bool disposing)
         {

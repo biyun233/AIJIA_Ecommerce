@@ -104,31 +104,6 @@ namespace AIJIA.Controllers
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
-        // GET: Marks/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Mark mark = db.Marks.Find(id);
-            if (mark == null)
-            {
-                return HttpNotFound();
-            }
-            return View(mark);
-        }
-
-        // POST: Marks/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Mark mark = db.Marks.Find(id);
-            db.Marks.Remove(mark);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
 
         protected override void Dispose(bool disposing)
         {

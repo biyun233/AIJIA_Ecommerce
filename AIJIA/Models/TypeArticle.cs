@@ -7,6 +7,9 @@ namespace AIJIA.Models
     {
         [Key]
         public int ID { get; set; }
+
+        [Required(ErrorMessage = "Le Nom de la Catégorie est Obligatoire !")]
+        [Display(Name = "Catégorie")]
         public string Name { get; set; }
     }
 }
