@@ -5,78 +5,137 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Mark.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Provider.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TypeArticle.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Color)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Size)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Price)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.QuantityStock)
-        </th>
-        <th></th>
-    </tr>
+<div class="row">
+    <button class="btn btnCreate">
+        @Html.ActionLink("Nouveau Article", "Create")
+    </button>
+</div>
+<div class="row container">
+    <div class="col-md-12">
+        <div class="">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col" class="text-center">ID</th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Mark.Name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Provider.Name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.TypeArticle.Name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Name)
+                        </th>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Mark.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Provider.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TypeArticle.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Color)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Size)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Price)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.QuantityStock)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ArticleId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ArticleId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ArticleId })
-        </td>
-    </tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Color)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Size)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Price)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.QuantityStock)
+                        </th>
+                        <th scope="col" class="text-center">Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+
+                    <tr id="row_@item.ArticleId">
+                        <th scope="row"> @Html.DisplayFor(modelItem => item.ArticleId)</th>
+                        <td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Mark.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Provider.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TypeArticle.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Color)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Size)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Price)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.QuantityStock)
+                        
+                        <td class="d-flex">
+                            <button class="btn buttonMargin">
+                                @Html.ActionLink("Editer", "Edit", new { id = item.ArticleId })
+                            </button>
+
+                            <button class="btn btn-danger buttonMargin" onclick="ConfirmDelete(@item.ArticleId)">
+                                Supprimer
+                            </button>
+
+                        </td>
+
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="ModalDelete" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-body">
+                Êtes vous sûr de vouloir Supprimer cet Artcile ?
+            </div>
+            <div class="modal-footer">
+                <button class="btn buttonMargin" data-dismiss="modal">NON</button>
+                <button href="#" class="btn buttonMargin" onclick="DeleteArticle()">OUI</button>
+            </div>
+        </div>
+    </div>
+    <input type="hidden" id="hiddenArticleId" />
+</div>
+
+
+
+@section scripts {
+    <script>
+        var ConfirmDelete = function (ArticleID) {
+            $("#hiddenArticleId").val(ArticleID);
+            $("#ModalDelete").modal('show');
+        };
+
+        var DeleteArticle = function () {
+            var articleID = $("#hiddenArticleId").val();
+            console.log($("#hiddenArticleId").val(articleID));
+            $.ajax({
+                type: "POST",
+                url: "/Articles/DeleteArticle",
+                data: { ArticleID: articleID },
+                success: function (result) {
+                    $("#ModalDelete").modal('hide');
+                    $("#row_" + articleID).remove();
+                }
+            })
+        };
+    </script>
 }
-
-</table>

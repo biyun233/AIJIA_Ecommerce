@@ -6,6 +6,7 @@ namespace AIJIA.Models
     public class Provider
     {
         [Key]
+        [Display(Name = "Fournisseur")]
         public int ID { get; set; }
 
         [Required(ErrorMessage = "Le Nom du Fournisseur est Obligatoire !")]

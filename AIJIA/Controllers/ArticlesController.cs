@@ -102,31 +102,21 @@ namespace AIJIA.Controllers
             return View(article);
         }
 
-        // GET: Articles/Delete/5
-        public ActionResult Delete(int? id)
+        // Delete With Ajax
+        public JsonResult DeleteArticle(int ArticleID)
         {
-            if (id == null)
+            bool result = false;
+            Article article = db.Articles.Where(x => x.ArticleId == ArticleID).SingleOrDefault();
+            if (article != null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                db.Articles.Remove(article);
+                db.SaveChanges();
+                result = true;
             }
-            Article article = db.Articles.Find(id);
-            if (article == null)
-            {
-                return HttpNotFound();
-            }
-            return View(article);
+
+            return Json(result, JsonRequestBehavior.AllowGet);
         }
 
-        // POST: Articles/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Article article = db.Articles.Find(id);
-            db.Articles.Remove(article);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
 
         protected override void Dispose(bool disposing)
         {
