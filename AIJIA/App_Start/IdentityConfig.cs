@@ -106,4 +106,17 @@ namespace AIJIA
             return new ApplicationSignInManager(context.GetUserManager<ApplicationUserManager>(), context.Authentication);
         }
     }
+
+    // Gestion des Rôles pour les Utilisateurs 
+    public class UserRoleManager : RoleManager<UserRole> 
+    {
+        public UserRoleManager(IRoleStore<UserRole, string> roleStore) : base(roleStore) { }
+        public static UserRoleManager Create(IdentityFactoryOptions<UserRoleManager> options, IOwinContext context) 
+        {
+            var userRoleManager = new UserRoleManager(new RoleStore<UserRole>(context.Get<ApplicationDbContext>()));
+
+            return userRoleManager;
+        }
+    }
+
 }

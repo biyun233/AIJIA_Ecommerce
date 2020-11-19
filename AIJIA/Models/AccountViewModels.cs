@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System;
 
 namespace AIJIA.Models
 {
@@ -64,6 +65,39 @@ namespace AIJIA.Models
 
     public class RegisterViewModel
     {
+        [Required(ErrorMessage = "Le Nom est Obligatoire !")]
+        [Display(Name = "Nom")]
+        public string Lastename { get; set; }
+
+        [Required(ErrorMessage = "Le Prenom est Obligatoire !")]
+        [Display(Name = "Prenom")]
+        public string Firstname { get; set; }
+
+        [Required(ErrorMessage = "Le Numéro de Telephone est Obligatoire !")]
+        [Display(Name = "Telephone")]
+        public string Phone { get; set; }
+
+        [Required(ErrorMessage = "Le Code Postal est Obligatoire !")]
+        [Display(Name = "Code Posatl")]
+        public string PostalCode { get; set; }
+
+        [Required(ErrorMessage = "Indiquer votre Ville !")]
+        [Display(Name = "Ville")]
+        public string City { get; set; }
+
+        [Required(ErrorMessage = "Indiquer votre Pays !")]
+        [Display(Name = "Pays")]
+        public string Country { get; set; }
+
+        [Required(ErrorMessage = "Indiquer Votre Genre !")]
+        [Display(Name = "Genre")]
+        public string Sex { get; set; }
+
+        [Required(ErrorMessage = "Votre Date De Naissance est Obligatoire !")]
+        [Display(Name = "Anniversaire")]
+        public DateTime Birthday { get; set; }
+
+
         [Required]
         [EmailAddress]
         [Display(Name = "Courrier électronique")]

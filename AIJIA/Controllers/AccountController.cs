@@ -151,7 +151,11 @@ namespace AIJIA.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser {
+                    UserName = model.Email, Email = model.Email, 
+                    Lastename = model.Lastename, Firstname = model.Firstname, Phone = model.Phone, PostalCode = model.PostalCode,
+                    City = model.City, Country = model.Country, Sex = model.Sex, Birthday = model.Birthday, 
+                };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {

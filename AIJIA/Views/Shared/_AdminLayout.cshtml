@@ -6,6 +6,8 @@
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+
+
    
 </head>
 <body class="bodyStyle">
@@ -13,7 +15,7 @@
     <div class="wrapper">
         <nav id="sidebar">
             <div class="sidebar-header">
-                AIJIA GESTION
+                GESTION
             </div>
             <ul class="list-unstyled components">
                
@@ -52,7 +54,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="#">Utilisateurs</a>
+                    @Html.ActionLink("Utilisateurs", "Index", "Role")
                 </li>
                 <li>
                     <a href="#">Messages</a>
@@ -71,9 +73,7 @@
             <div>
                 @RenderBody()
             </div>
-            <div class="line">
-
-            </div>
+            
 
         </div>
     </div>

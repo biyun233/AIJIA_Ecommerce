@@ -365,9 +365,7 @@ C:\Users\mamadoudiallo\source\repos\Aijia_Ecommerce\AIJIA\bin\fr\Microsoft.Owin.
 C:\Users\mamadoudiallo\source\repos\Aijia_Ecommerce\AIJIA\bin\fr\Microsoft.Owin.Security.Google.resources.dll
 C:\Users\mamadoudiallo\source\repos\Aijia_Ecommerce\AIJIA\bin\fr\Microsoft.Owin.Security.Twitter.resources.dll
 C:\Users\mamadoudiallo\source\repos\Aijia_Ecommerce\AIJIA\bin\fr\Microsoft.Owin.Security.MicrosoftAccount.resources.dll
-C:\Users\mamadoudiallo\source\repos\Aijia_Ecommerce\AIJIA\obj\Debug\AIJIA.Migrations.aijiaModelsVal.resources
-C:\Users\mamadoudiallo\source\repos\Aijia_Ecommerce\AIJIA\obj\Debug\AIJIA.Migrations.ajiaModelsValid.resources
-C:\Users\mamadoudiallo\source\repos\Aijia_Ecommerce\AIJIA\obj\Debug\AIJIA.Migrations.aijiaModelsValidation.resources
+C:\Users\mamadoudiallo\source\repos\Aijia_Ecommerce\AIJIA\obj\Debug\AIJIA.Migrations.roles.resources
 C:\Users\mamadoudiallo\source\repos\Aijia_Ecommerce\AIJIA\obj\Debug\AIJIA.csproj.GenerateResource.cache
 C:\Users\mamadoudiallo\source\repos\Aijia_Ecommerce\AIJIA\obj\Debug\AIJIA.csproj.CoreCompileInputs.cache
 C:\Users\mamadoudiallo\source\repos\Aijia_Ecommerce\AIJIA\obj\Debug\AIJIA.csproj.CopyComplete

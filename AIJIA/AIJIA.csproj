@@ -260,21 +260,14 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MarksController.cs" />
     <Compile Include="Controllers\ProvidersController.cs" />
+    <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\TypeArticlesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202011180049163_aijiaModelsVal.cs" />
-    <Compile Include="Migrations\202011180049163_aijiaModelsVal.Designer.cs">
-      <DependentUpon>202011180049163_aijiaModelsVal.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202011180208044_ajiaModelsValid.cs" />
-    <Compile Include="Migrations\202011180208044_ajiaModelsValid.Designer.cs">
-      <DependentUpon>202011180208044_ajiaModelsValid.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202011180223416_aijiaModelsValidation.cs" />
-    <Compile Include="Migrations\202011180223416_aijiaModelsValidation.Designer.cs">
-      <DependentUpon>202011180223416_aijiaModelsValidation.cs</DependentUpon>
+    <Compile Include="Migrations\202011190037256_roles.cs" />
+    <Compile Include="Migrations\202011190037256_roles.Designer.cs">
+      <DependentUpon>202011190037256_roles.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -289,6 +282,7 @@
     <Compile Include="Models\ModelDelivery.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\Provider.cs" />
+    <Compile Include="Models\RoleViewModel.cs" />
     <Compile Include="Models\StatusOrder.cs" />
     <Compile Include="Models\TypeArticle.cs" />
     <Compile Include="Models\User.cs" />
@@ -376,6 +370,10 @@
     <Content Include="Views\Articles\Details.cshtml" />
     <Content Include="Views\Articles\Edit.cshtml" />
     <Content Include="Views\Articles\Index.cshtml" />
+    <Content Include="Views\Role\Index.cshtml" />
+    <Content Include="Views\Role\Create.cshtml" />
+    <Content Include="Views\Role\Edit.cshtml" />
+    <Content Include="Views\Role\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -394,14 +392,8 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202011180049163_aijiaModelsVal.resx">
-      <DependentUpon>202011180049163_aijiaModelsVal.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202011180208044_ajiaModelsValid.resx">
-      <DependentUpon>202011180208044_ajiaModelsValid.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202011180223416_aijiaModelsValidation.resx">
-      <DependentUpon>202011180223416_aijiaModelsValidation.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202011190037256_roles.resx">
+      <DependentUpon>202011190037256_roles.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
