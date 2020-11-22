@@ -26,15 +26,16 @@ namespace AIJIA.Controllers
             SignInManager = signInManager;
         }
 
+
         public ApplicationSignInManager SignInManager
         {
             get
             {
                 return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
             }
-            private set 
-            { 
-                _signInManager = value; 
+            private set
+            {
+                _signInManager = value;
             }
         }
 
@@ -245,6 +246,77 @@ namespace AIJIA.Controllers
         }
 
         //
+        // GET: /Manage/ChangeAddress
+        public ActionResult ChangeAddress()
+        {
+            return View();
+        }
+
+        //
+        // POST: /Manage/ChangeAddress
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> ChangeAddress(ChangeAddressViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+            var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+            user.Address = model.Address;
+            user.PostalCode = model.PostalCode;
+            user.City = model.City;
+            user.Country = model.Country;
+            var result = await UserManager.UpdateAsync(user);
+            if (result.Succeeded)
+            {
+                if (user != null)
+                {
+                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                }
+                return RedirectToAction("Index");
+            }
+            AddErrors(result);
+            return View(model);
+        }
+
+        //
+        // GET: /Manage/ChangeProfil
+        public ActionResult ChangeProfil()
+        {
+            return View();
+        }
+
+        //
+        // POST: /Manage/ChangeProfil
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> ChangeProfil(ChangeProfilViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+            var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+            user.Firstname = model.Firstname;
+            user.Lastename = model.Lastename;
+            user.Phone = model.Phone;
+            user.Email = model.Email;
+            var result = await UserManager.UpdateAsync(user);
+            if (result.Succeeded)
+            {
+                if (user != null)
+                {
+                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                }
+                return RedirectToAction("Index");
+            }
+            AddErrors(result);
+            return View(model);
+        }
+
+
+        //
         // GET: /Manage/SetPassword
         public ActionResult SetPassword()
         {
@@ -333,7 +405,7 @@ namespace AIJIA.Controllers
             base.Dispose(disposing);
         }
 
-#region Programmes d'assistance
+        #region Programmes d'assistance
         // Utilisé pour la protection XSRF lors de l'ajout de connexions externes
         private const string XsrfKey = "XsrfId";
 
@@ -384,6 +456,6 @@ namespace AIJIA.Controllers
             Error
         }
 
-#endregion
+        #endregion
     }
 }

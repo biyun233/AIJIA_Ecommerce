@@ -58,6 +58,47 @@ namespace AIJIA.Models
         public string ConfirmPassword { get; set; }
     }
 
+    public class ChangeAddressViewModel
+    {
+        [Required]
+        [Display(Name = "Adresse")]
+        public string Address { get; set; }
+
+        [Required]
+        [DataType(DataType.PostalCode)]
+        [Display(Name = "Code Postal")]
+        public string PostalCode { get; set; }
+
+        [Required]
+        [Display(Name = "Ville")]
+        public string City { get; set; }
+
+        [Required]
+        [Display(Name = "Pays")]
+        public string Country { get; set; }
+    }
+
+    public class ChangeProfilViewModel
+    {
+        [Required]
+        [Display(Name = "Firstname")]
+        public string Firstname { get; set; }
+
+        [Required]
+        [Display(Name = "Lastname")]
+        public string Lastename { get; set; }
+
+        [Required]
+        [Display(Name = "Phone")]
+        public string Phone { get; set; }
+
+        [Required]
+        [Display(Name = "Email")]
+        public string Email { get; set; }
+
+    }
+
+
     public class AddPhoneNumberViewModel
     {
         [Required]

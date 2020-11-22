@@ -1,87 +1,80 @@
-﻿@model AIJIA.Models.IndexViewModel
+﻿
+@using Microsoft.AspNet.Identity
+@using System.Security.Claims;
+@model AIJIA.Models.IndexViewModel
 @{
     ViewBag.Title = "Gérer";
+    Layout = "~/Views/Shared/_ProfilLayout.cshtml";
+    var user = (System.Security.Claims.ClaimsIdentity)User.Identity;
 }
 
-<h2>@ViewBag.Title.</h2>
 
-<p class="text-success">@ViewBag.StatusMessage</p>
-<div>
-    <h4>Modifier vos paramètres de compte</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>Mot de passe :</dt>
-        <dd>
-            [
-            @if (Model.HasPassword)
-            {
-                @Html.ActionLink("Changer votre mot de passe", "ChangePassword")
-            }
-            else
-            {
-                @Html.ActionLink("Créer", "SetPassword")
-            }
-            ]
-        </dd>
-        <dt>Connexions externes :</dt>
-        <dd>
-            @Model.Logins.Count [
-            @Html.ActionLink("Gérer", "ManageLogins") ]
-        </dd>
-        @*
-            Les numéros de téléphone peuvent être utilisés en tant que second facteur de vérification dans un système d'authentification à 2 facteurs.
-             
-             Consultez <a href="https://go.microsoft.com/fwlink/?LinkId=403804">cet article</a>
-                pour plus d'informations sur la configuration de cette application ASP.NET et la prise en charge de l'authentification à 2 facteurs à l'aide de SMS.
-             
-             Décommentez le bloc suivant après avoir configuré l'authentification à 2 facteurs
-        *@
-        @*  
-            <dt>Numéro de téléphone :</dt>
-            <dd>
-                @(Model.PhoneNumber ?? "None")
-                @if (Model.PhoneNumber != null)
-                {
-                    <br />
-                    <text>[&nbsp;&nbsp;@Html.ActionLink("Change", "AddPhoneNumber")&nbsp;&nbsp;]</text>
-                    using (Html.BeginForm("RemovePhoneNumber", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-                    {
-                        @Html.AntiForgeryToken()
-                        <text>[<input type="submit" value="Supprimer" class="btn-link" />]</text>
-                    }
-                }
-                else
-                {
-                    <text>[&nbsp;&nbsp;@Html.ActionLink("Add", "AddPhoneNumber")
-                }
-            </dd>
-        *@
-        <dt>Authentification à 2 facteurs :</dt>
-        <dd>
+<div class="container">
+    <div class="col-md-offset-3 col-md-9" style="top:-500px;">
+        <p style="text-decoration:underline;">Mon Profil</p>
+
+    </div>
+    <div class="col-md-offset-3 col-md-5 profil_content" style="top:-490px;">
+        <div class="row" style="padding-top: 20px;padding-left: 20px;">
             <p>
-                Aucun fournisseur d'authentification à 2 facteurs n'est configuré. Consultez <a href="https://go.microsoft.com/fwlink/?LinkId=403804">cet article</a>
-                pour plus d'informations sur la configuration de cette application ASP.NET et la prise en charge de l'authentification à 2 facteurs.
+                @user.FindFirstValue("Sex")
+                @user.FindFirstValue("Firstname")
+                @user.FindFirstValue("Lastname")
             </p>
-            @*@if (Model.TwoFactor)
-                {
-                    using (Html.BeginForm("DisableTwoFactorAuthentication", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-                    {
-                        @Html.AntiForgeryToken()
-                        <text>Activé
-                        <input type="submit" value="Désactiver" class="btn btn-link" />
-                        </text>
-                    }
-                }
-                else
-                {
-                    using (Html.BeginForm("EnableTwoFactorAuthentication", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-                    {
-                        @Html.AntiForgeryToken()
-                        <text>Désactivé
-                        <input type="submit" value="Activer" class="btn btn-link" />
-                        </text>
-                    }
-                }*@
-        </dd>
-    </dl>
+        </div>
+        <div class="row" style="padding-left: 20px;">
+            <p>
+                Email:
+                @Html.DisplayFor(x => User.Identity.Name)
+            </p>
+        </div>
+        <div class="row" style="padding-left: 20px;">
+            <p>
+                Tel:
+                @user.FindFirstValue("Phone")
+            </p>
+        </div>
+        <div class="row" style="padding-left: 20px;">
+            <p>
+                Date de naissance:
+                @user.FindFirstValue("Birthday")
+            </p>
+        </div>
+        <div class="row" style="padding-left: 20px;">
+            <a href="/Manage/ChangeProfil">Modifier</a>
+        </div>
+    </div>
+    <div class="col-md-offset-3 col-md-9" style="top:-450px;">
+        <p style="text-decoration:underline;">Carnet d'adress</p>
+
+    </div>
+    <div class="col-md-offset-3 col-md-5 profil_content" style="top:-440px;">
+        <div class="row" style="padding-top: 20px;padding-left: 20px;">
+            <p>
+                @user.FindFirstValue("Sex")
+                @user.FindFirstValue("Firstname")
+                @user.FindFirstValue("Lastname")
+            </p>
+        </div>
+        <div class="row" style="padding-left: 20px;">
+            <p>
+                @user.FindFirstValue("Address")
+            </p>
+        </div>
+        <div class="row" style="padding-left: 20px;">
+            <p>
+                @user.FindFirstValue("PostalCode")
+                @user.FindFirstValue("City")
+            </p>
+        </div>
+        <div class="row" style="padding-left: 20px;">
+            <p>
+                @user.FindFirstValue("Phone")
+            </p>
+        </div>
+        <div class="row" style="padding-left: 20px;">
+            <a href="/Manage/ChangeAddress">Modifier</a>
+        </div>
+
+    </div>
 </div>

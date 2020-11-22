@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System;
 
 namespace AIJIA.Models
 {
@@ -65,39 +64,6 @@ namespace AIJIA.Models
 
     public class RegisterViewModel
     {
-        [Required(ErrorMessage = "Le Nom est Obligatoire !")]
-        [Display(Name = "Nom")]
-        public string Lastename { get; set; }
-
-        [Required(ErrorMessage = "Le Prenom est Obligatoire !")]
-        [Display(Name = "Prenom")]
-        public string Firstname { get; set; }
-
-        [Required(ErrorMessage = "Le Numéro de Telephone est Obligatoire !")]
-        [Display(Name = "Telephone")]
-        public string Phone { get; set; }
-
-        [Required(ErrorMessage = "Le Code Postal est Obligatoire !")]
-        [Display(Name = "Code Posatl")]
-        public string PostalCode { get; set; }
-
-        [Required(ErrorMessage = "Indiquer votre Ville !")]
-        [Display(Name = "Ville")]
-        public string City { get; set; }
-
-        [Required(ErrorMessage = "Indiquer votre Pays !")]
-        [Display(Name = "Pays")]
-        public string Country { get; set; }
-
-        [Required(ErrorMessage = "Indiquer Votre Genre !")]
-        [Display(Name = "Genre")]
-        public string Sex { get; set; }
-
-        [Required(ErrorMessage = "Votre Date De Naissance est Obligatoire !")]
-        [Display(Name = "Anniversaire")]
-        public DateTime Birthday { get; set; }
-
-
         [Required]
         [EmailAddress]
         [Display(Name = "Courrier électronique")]
@@ -113,6 +79,50 @@ namespace AIJIA.Models
         [Display(Name = "Confirmer le mot de passe ")]
         [Compare("Password", ErrorMessage = "Le mot de passe et le mot de passe de confirmation ne correspondent pas.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [Display(Name = "Nom")]
+        public string Lastename { get; set; }
+
+        [Required]
+        [Display(Name = "Prénom")]
+        public string Firstname { get; set; }
+
+
+        [DataType(DataType.PhoneNumber)]
+        [Display(Name = "Tel")]
+        public string Phone { get; set; }
+
+
+        [Display(Name = "Adresse")]
+        public string Address { get; set; }
+
+        [DataType(DataType.PostalCode)]
+        [Display(Name = "Code Postal")]
+        public string PostalCode { get; set; }
+
+
+        [Display(Name = "Ville")]
+        public string City { get; set; }
+
+
+        [Display(Name = "Pays")]
+        public string Country { get; set; }
+
+        [Required]
+        [Display(Name = "Civilité")]
+        public string Sex { get; set; }
+
+        [Required]
+        [DataType(DataType.DateTime)]
+        [Display(Name = "Date de Naissance")]
+        public string Birthday { get; set; }
+
+        [Display(Name = "Admin")]
+        public string IsAdmin { get; set; }
+
+
+
     }
 
     public class ResetPasswordViewModel

@@ -1,8 +1,9 @@
-﻿.header {
+﻿/*Home Index*/
+.header {
     height: 100px;
     width: 100%;
-    position: fixed;
-    top: 0;
+    position: absolute;
+    top: 0px;
     z-index: 1;
 }
 
@@ -18,8 +19,17 @@
     }
 
 .logobar {
-    height: 40px;
-    background-color: white;
+    height: 50px;
+    background: white;
+    vertical-align: baseline;
+    margin-top: 15px;
+}
+
+.home_icon,
+.home_icon:hover {
+    text-decoration: none;
+    font-size: 25px;
+    color: #0F0D0D;
 }
 
 .menu {
@@ -60,14 +70,111 @@ body {
     .product-item button {
         background-color: #B490B9;
         border: 0;
-        color: #FCF9F9;
+        color: white;
         border-radius: 10px;
-        height: 20px;
+        height: 30px;
     }
 
 .content {
     padding-left: 50px;
     padding-right: 30px;
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+
+/*Login page*/
+.loginbox {
+    border: 1px solid lightgrey;
+    height: 400px;
+}
+
+.caption > a {
+    background-color: #B490B9;
+    border: 0;
+    color: white;
+    border-radius: 20px;
+    padding: 15px;
+    margin-top: 30px;
+}
+
+.btn-submit {
+    background-color: #B490B9;
+    border: 0;
+    color: white;
+    border-radius: 20px;
+    height: 40px;
+}
+
+.icon > li > a,
+.icon > li > a :hover,
+.icon > li > a :active {
+    background-color: transparent;
+    border: 0;
+    color: black;
+    padding-bottom: 0;
+    padding-top: 0;
+}
+
+li a span {
+    display: block;
+}
+
+.glyphicon {
+    left: 23px;
+}
+
+/*Page profil*/
+.profil_box {
+    height: 500px;
+    width: 250px;
+    border-right: 1px solid lightgrey;
+    margin-left: 20px;
+    margin-top: 60px;
+    padding-top: 50px;
+}
+
+.profil_item {
+    padding-top: 30px;
+    font-size: 16px;
+    text-align: left;
+}
+
+    .profil_item a {
+        padding-top: 30px;
+        font-size: 16px;
+        text-align: center;
+        color: black;
+        padding: 5px;
+        padding-right: 50px;
+    }
+
+    .profil_item :hover,
+    .profil_item :active {
+        background: lightgrey;
+        color: white;
+    }
+
+    .profil_item a:hover,
+    .profil_item a:active {
+        background: lightgrey;
+        color: white;
+        text-decoration: none;
+    }
+
+.profil_content {
+    height: 200px;
+    width: 550px;
+    border: 1px solid lightgrey;
+}
+
+.mdp_box {
+    height: 300px;
+    width: 300px;
+    border: 1px solid lightgrey;
+    text-align: center;
+    margin-top: 60px;
+    padding: 20px;
 }
 /* Override the default bootstrap behavior where horizontal description lists 
    will truncate terms that are too long to fit in the left column 
@@ -82,3 +189,153 @@ select,
 textarea {
     max-width: 280px;
 }
+
+
+
+
+
+/* Admin */
+.bodyStyle {
+    top: 0px !important;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+.aijia {
+    margin-left: 0px;
+    background: #B490B9;
+    padding: 10px;
+    padding-top: 12px;
+    color: white;
+    font-size: 20px;
+}
+
+
+a,
+a:hover,
+a:focus {
+    color: #337ab7;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+/* Side Bar */
+.wrapper {
+    display: flex;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+#sidebar {
+    font-size: 18px;
+    min-width: 190px;
+    max-width: 250px;
+    background: #A496A5;
+    color: black;
+    transition: all 0.3s;
+}
+
+    #sidebar .active {
+        margin-left: -250px;
+    }
+
+    #sidebar .sidebar-header {
+        padding: 0px;
+        padding-left: 10px;
+        color: white;
+        margin-top: 16px;
+    }
+
+    #sidebar ul.components {
+        padding-top: 10px;
+        padding-left: 10px;
+        font-size: 16px;
+    }
+
+    #sidebar ul p {
+        color: black;
+        padding: 10px;
+    }
+
+    #sidebar ul li a {
+        padding: 10px;
+        font-size: 1.1em;
+        display: block;
+        color: white;
+        background: #A496A5;
+    }
+
+        #sidebar ul li a:hover {
+            color: #B490B9;
+            background: white;
+        }
+
+
+    #sidebar ul li.active > a,
+    a[aria-expanded="true"] {
+        color: white;
+        background: #A496A5;
+    }
+
+a[data-toggle="collapse"] {
+    position: relative;
+}
+
+.dropdown-toggle::after {
+    display: block;
+    position: relative;
+    top: 50%;
+    right: 50%;
+    transform: translateY(-50%);
+}
+
+ul ul a {
+    font-size: 0.9em !important;
+    padding-left: 30px !important;
+    background: #B490B9;
+    text-decoration: none;
+}
+
+#content {
+    width: 100%;
+    padding: 20px;
+    min-height: 100vh;
+    transition: all 0.3s;
+}
+
+/* Fin Admin */
+
+/* Index */
+
+.btnCreate {
+    margin-bottom: 5px;
+    margin-left: 30px;
+    border-radius: 5px;
+    border: 0px;
+}
+
+.buttonMargin {
+    margin-left: 20px;
+    border-radius: 5px;
+    border: 0px;
+    text-decoration: none;
+}
+
+.formCreate {
+    margin-top: 50px;
+}
+
+.formCreatePad {
+    padding: 30px;
+}
+
+
+.titleStyle {
+    margin-bottom: 4px;
+}
+
+.btnCrud {
+    margin-left: 20px;
+}
+
+/* Fin Index */

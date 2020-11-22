@@ -13,49 +13,64 @@ namespace AIJIA.Models
     public class ApplicationUser : IdentityUser
     {
 
-        [Required(ErrorMessage = "Le Nom est Obligatoire !")]
         [Display(Name = "Nom")]
         public string Lastename { get; set; }
 
-        [Required(ErrorMessage = "Le Prenom est Obligatoire !")]
-        [Display(Name = "Prenom")]
+        [Display(Name = "Prénom")]
         public string Firstname { get; set; }
 
-        [Required(ErrorMessage = "Le Numéro de Telephone est Obligatoire !")]
-        [Display(Name = "Telephone")]
-        public string Phone { get; set; }
 
-        [Required(ErrorMessage = "Le Code Postal est Obligatoire !")]
-        [Display(Name = "Code Posatl")]
+        [Display(Name = "Code Postal")]
         public string PostalCode { get; set; }
 
-        [Required(ErrorMessage = "Indiquer votre Ville !")]
+        [Display(Name = "Adresse")]
+        public string Address { get; set; }
+
+        [Display(Name = "Tel")]
+        public string Phone { get; set; }
+
         [Display(Name = "Ville")]
         public string City { get; set; }
 
-        [Required(ErrorMessage = "Indiquer votre Pays !")]
         [Display(Name = "Pays")]
         public string Country { get; set; }
 
-        [Required(ErrorMessage = "Indiquer Votre Genre !")]
-        [Display(Name = "Genre")]
+
+        [Display(Name = "Civilité")]
         public string Sex { get; set; }
 
-        [Required(ErrorMessage = "Votre Date De Naissance est Obligatoire !")]
-        [Display(Name = "Anniversaire")]
-        public DateTime Birthday { get; set; }
+
+        [Display(Name = "Date de Naissance")]
+        public string Birthday { get; set; }
+
+
+        [Display(Name = "Admin")]
+        public string IsAdmin { get; set; }
+
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // Notez qu'authenticationType doit correspondre à l'élément défini dans CookieAuthenticationOptions.AuthenticationType
             var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
             // Ajouter les revendications personnalisées de l’utilisateur ici
+            userIdentity.AddClaim(new Claim("Firstname", this.Firstname));
+            userIdentity.AddClaim(new Claim("Lastname", this.Lastename));
+            userIdentity.AddClaim(new Claim("PostalCode", this.PostalCode));
+            userIdentity.AddClaim(new Claim("City", this.City));
+            userIdentity.AddClaim(new Claim("Country", this.Country));
+            userIdentity.AddClaim(new Claim("Sex", this.Sex));
+            userIdentity.AddClaim(new Claim("Birthday", this.Birthday));
+            userIdentity.AddClaim(new Claim("Phone", this.Phone));
+            userIdentity.AddClaim(new Claim("Address", this.Address));
+            userIdentity.AddClaim(new Claim("IsAdmin", this.IsAdmin));
             return userIdentity;
         }
-    }
+    
 
-    // Definitions Des Rôles pour les Utilisateurs 
-    public class UserRole : IdentityRole 
+}
+
+// Definitions Des Rôles pour les Utilisateurs 
+public class UserRole : IdentityRole 
     {
         public UserRole() : base() { }
         public UserRole(string roleName) : base(roleName) { }
@@ -73,7 +88,7 @@ namespace AIJIA.Models
         public virtual DbSet<Article> Articles { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<StatusOrder> StatusOrders { get; set; }
-        //public virtual DbSet<User> Userss { get; set; }
+        
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
