@@ -5,10 +5,26 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<div class="row content">
+    @{
+        string image = @Model.Description + ".jpg";
+    }
+    <div class="col-md-6">
+        <img class="img-responsive" title="Click to View Product Detail"
+             style="cursor:pointer;height:300px;width:450px;"
+             src="~/Images/@image" />
+    </div>
+    <div class="col-md-5 col-md-offset-1">
+        <p class="article_title">@Model.Name</p>
+        <p class="article_mark"> @Model.Mark.Name</p>
+        <p class="article_price">@Model.Price € <small style="font-size:20px;">dont TVA</small></p>
+        <hr/>
+        <p class="livre"> Livré sous 48h</p>
+        <button class="btn-submit">Ajouter au Panier</button>
+    </div>
+</div>
 
-<div>
-    <h4>Article</h4>
+@*<div>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -88,4 +104,4 @@
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.ArticleId }) |
     @Html.ActionLink("Back to List", "Index")
-</p>
+</p>*@

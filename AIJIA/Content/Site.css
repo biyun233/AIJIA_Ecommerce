@@ -339,3 +339,27 @@ ul ul a {
 }
 
 /* Fin Index */
+
+/* Articles Detail*/
+.article_title {
+    font-size: 40px;
+    color: grey;
+}
+
+.article_mark {
+    font-size: 20px;
+    color: grey;
+    margin-top: -10px;
+    margin-left: 5px;
+}
+
+.article_price {
+    font-size: 30px;
+    color: grey;
+}
+
+.livre {
+    font-size: 30px;
+    margin-top: -12px;
+    margin-left:5px;
+}

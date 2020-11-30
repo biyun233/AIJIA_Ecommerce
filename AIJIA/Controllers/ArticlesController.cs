@@ -31,6 +31,14 @@ namespace AIJIA.Controllers
 
         }
 
+        // GET: Articles by Type
+        public ActionResult Articles_type(string type)
+        {
+            var articles = db.Articles.Where((a) => a.TypeArticle.Name == type);
+            return View(articles.ToList());
+
+        }
+
         // GET: Articles/Details/5
         public ActionResult Details(int? id)
         {
