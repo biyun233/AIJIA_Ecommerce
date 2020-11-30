@@ -1,0 +1,75 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - AIJIA </title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <div class="container-fluid header">
+        <div class="row message">
+            <div>
+                <span class="align-middle">AIJIA - Découvrez notre nouvelle collection!</span>
+            </div>
+        </div>
+        <div class="row logobar">
+            <div class="container" style="padding-bottom:2px;">
+                <div class="col-md-4 ">
+                    @Html.ActionLink("AIJIA", "Index", "Home", new { @class = "home_icon" })
+                </div>
+                <div class="col-md-4">
+                    <form class="form-inline">
+                        <input class="form-control no-border" type="search" placeholder="Rechercher un article" />
+                        <span class="glyphicon glyphicon-search"></span>
+                    </form>
+                </div>
+                <div class="col-md-4">
+
+                    @Html.Partial("_LoginPartial")
+                </div>
+            </div>
+        </div>
+        <div class="row menu">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav collect">
+                    <li>@Html.ActionLink("Accueil", "Index", "Home")</li>
+                    <li>@Html.ActionLink("À propos de", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    @*<li>@Html.ActionLink("Admin", "Admin", "Admin")</li>*@
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container content">
+        <div class="col-md-4 profil_box">
+            <div class="profil_item">
+                <a href="/Manage/Index">Mon Profil</a>
+            </div>
+            <div class="profil_item">
+                <p>Mes Commandes</p>
+            </div>
+            <div class="profil_item">
+                <a href="/Manage/ChangePassword">Changer Mot de passe</a>
+            </div>
+            <div class="profil_item">
+                <a class="profil_item" href="javascript:document.getElementById('logoutForm').submit()">Se déconnecter</a>
+            </div>
+        </div>
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Mon application ASP.NET</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+

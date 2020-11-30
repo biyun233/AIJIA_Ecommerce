@@ -1,0 +1,30 @@
+﻿@model IEnumerable<AIJIA.Models.Article>
+
+@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row product-container">
+    @foreach (var item in Model)
+      
+    {
+        <div class="col-md-3 col-sm-3 col-xs-6" style="margin-bottom:8px;">
+            <a href="@Url.Action("Details", "Articles", new { id = item.ArticleId })">
+                <div class="thumbnail product-item" style="height:300px;">
+                    @{
+                        string image = item.Description + ".jpg";
+                    }
+                    <img class="img-responsive" title="Click to View Product Detail"
+        style="cursor:pointer;height:160px;width:260px;"
+        src="~/Images/@image" />
+                    <div class="caption">
+                        <p>@item.Name</p>
+                        <p>@item.Price €</p>
+                        <button>Ajouter au Panier</button>
+                    </div>
+                </div>
+            </a>
+        </div>
+    }
+</div>

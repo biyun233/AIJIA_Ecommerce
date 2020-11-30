@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+
+   
+</head>
+<body class="bodyStyle">
+    <div class="aijia">AIJIA</div>
+    <div class="wrapper">
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                GESTION
+            </div>
+            <ul class="list-unstyled components">
+               
+                <li>
+                    <a href="#menuAijia" data-toggle="collapse" aria-expanded="false">Commandes</a>
+                    <ul class="collapse list-unstyled" id="menuAijia">
+                        <li>
+                            <a href="#">Commandes</a>
+                        </li>
+                        <li>
+                            <a href="#">Factures</a>
+                        </li>
+                        <li>
+                            <a href="#">Livraisons</a>
+                        </li>
+                        <li>
+                            <a href="#">MDL</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#menuAijia2" data-toggle="collapse" aria-expanded="false">Articles</a>
+                    <ul class="collapse list-unstyled" id="menuAijia2">
+                        <li>
+                            @Html.ActionLink("Articles", "Index", "Articles")
+                        </li>
+                        <li>
+                            @Html.ActionLink("Marques", "Index", "Marks")
+                        </li>
+                        <li>
+                            @Html.ActionLink("Catégories", "Index", "TypeArticles")
+                        </li>
+                        <li>
+                            @Html.ActionLink("Fournisseurs", "Index", "Providers")
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Utilisateurs</a>
+                </li>
+                <li>
+                    <a href="#">Messages</a>
+                </li>
+                <li>
+                    @Html.ActionLink("Site", "Index", "Home")
+                </li>
+                <li>
+                    <a href="#">Déconnexion</a>
+                </li>
+            </ul>
+        </nav>
+        <div id="content">
+           
+            
+            <div>
+                @RenderBody()
+            </div>
+            
+
+        </div>
+    </div>
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

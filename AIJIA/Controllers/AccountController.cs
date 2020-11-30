@@ -22,7 +22,7 @@ namespace AIJIA.Controllers
         {
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;
@@ -34,9 +34,9 @@ namespace AIJIA.Controllers
             {
                 return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
             }
-            private set 
-            { 
-                _signInManager = value; 
+            private set
+            {
+                _signInManager = value;
             }
         }
 
@@ -120,7 +120,7 @@ namespace AIJIA.Controllers
             // Si un utilisateur entre des codes incorrects pendant un certain intervalle, le compte de cet utilisateur 
             // est alors verrouillé pendant une durée spécifiée. 
             // Vous pouvez configurer les paramètres de verrouillage du compte dans IdentityConfig
-            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent:  model.RememberMe, rememberBrowser: model.RememberBrowser);
+            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent: model.RememberMe, rememberBrowser: model.RememberBrowser);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -151,12 +151,26 @@ namespace AIJIA.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser
+                {
+                    UserName = model.Email,
+                    Email = model.Email,
+                    Phone = model.Phone,
+                    Firstname = model.Firstname,
+                    Lastename = model.Lastename,
+                    PostalCode = model.PostalCode,
+                    City = model.City,
+                    Country = model.Country,
+                    Sex = model.Sex,
+                    Birthday = model.Birthday,
+                    Address = model.Address,
+                    IsAdmin = "false"
+                };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
+                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+
                     // Pour plus d'informations sur l'activation de la confirmation de compte et de la réinitialisation de mot de passe, visitez https://go.microsoft.com/fwlink/?LinkID=320771
                     // Envoyer un message électronique avec ce lien
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
@@ -165,6 +179,7 @@ namespace AIJIA.Controllers
 
                     return RedirectToAction("Index", "Home");
                 }
+
                 AddErrors(result);
             }
 

@@ -1,0 +1,49 @@
+﻿@using Microsoft.AspNet.Identity
+@using System.Security.Claims;
+@model AIJIA.Models.ChangeAddressViewModel
+@{
+    ViewBag.Title = "Changer l'adresse";
+    Layout = "~/Views/Shared/_ProfilLayout.cshtml";
+    var user = (System.Security.Claims.ClaimsIdentity)User.Identity;
+}
+
+@using (Html.BeginForm("ChangeAddress", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="container">
+        <div class="col-md-offset-2 col-md-4 mdp_box">
+            <h4>Modification d'adresse</h4>
+            @Html.ValidationSummary("", new { @class = "text-danger" })
+            <div class="form-group">
+                <div class="col-md-offset-1 col-md-10">
+                    @Html.EditorFor(m => m.Address, new { htmlAttributes = new { @class = "form-control no-border", @value = @user.FindFirstValue("Address"), @placeholder = @user.FindFirstValue("Address") } })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-1 col-md-10">
+                    @Html.EditorFor(m => m.PostalCode, new { htmlAttributes = new { @class = "form-control no-border", @value = @user.FindFirstValue("PostalCode"), @placeholder = @user.FindFirstValue("PostalCode") } })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-1 col-md-10">
+                    @Html.EditorFor(m => m.City, new { htmlAttributes = new { @class = "form-control no-border", @value = @user.FindFirstValue("City"), @placeholder = @user.FindFirstValue("City") } })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-1 col-md-10">
+                    @Html.EditorFor(m => m.Country, new { htmlAttributes = new { @class = "form-control no-border", @value = @user.FindFirstValue("Country"), @placeholder = @user.FindFirstValue("Country") } })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-3 col-md-4">
+                    <input type="submit" value="Enregistrer" class="btn btn-submit" />
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Styles.Render("~/Content/Site.css")
+    @Scripts.Render("~/bundles/jqueryval")
+}

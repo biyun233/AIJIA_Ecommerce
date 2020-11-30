@@ -79,6 +79,50 @@ namespace AIJIA.Models
         [Display(Name = "Confirmer le mot de passe ")]
         [Compare("Password", ErrorMessage = "Le mot de passe et le mot de passe de confirmation ne correspondent pas.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [Display(Name = "Nom")]
+        public string Lastename { get; set; }
+
+        [Required]
+        [Display(Name = "Prénom")]
+        public string Firstname { get; set; }
+
+
+        [DataType(DataType.PhoneNumber)]
+        [Display(Name = "Tel")]
+        public string Phone { get; set; }
+
+
+        [Display(Name = "Adresse")]
+        public string Address { get; set; }
+
+        [DataType(DataType.PostalCode)]
+        [Display(Name = "Code Postal")]
+        public string PostalCode { get; set; }
+
+
+        [Display(Name = "Ville")]
+        public string City { get; set; }
+
+
+        [Display(Name = "Pays")]
+        public string Country { get; set; }
+
+        [Required]
+        [Display(Name = "Civilité")]
+        public string Sex { get; set; }
+
+        [Required]
+        [DataType(DataType.DateTime)]
+        [Display(Name = "Date de Naissance")]
+        public string Birthday { get; set; }
+
+        [Display(Name = "Admin")]
+        public string IsAdmin { get; set; }
+
+
+
     }
 
     public class ResetPasswordViewModel

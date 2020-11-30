@@ -1,0 +1,115 @@
+﻿@model IEnumerable<AIJIA.Models.Provider>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<div class="row">
+    <button class="btn btnCreate">
+        @Html.ActionLink("Nouveau Fournisseur", "Create")
+    </button>
+</div>
+<div class="row container">
+    <div class="col-md-10">
+        <div class="">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col" class="text-center">ID</th>
+                        <th>
+                            Nom
+                        </th>
+                        <th>
+                            Email
+                        </th>
+                        <th>
+                            Telephone
+                        </th>
+                        <th>
+                            Ville
+                        </th>
+                        <th scope="col" class="text-center">Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+
+                    <tr id="row_@item.ID">
+                        <th scope="row"> @Html.DisplayFor(modelItem => item.ID)</th>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Mail)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.phone)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.City)
+                        </td>
+                        <td class="d-flex">
+                            <button class="btn buttonMargin">
+                                @Html.ActionLink("Editer", "Edit", new { id = item.ID })
+                            </button>
+
+                            <button class="btn btn-danger buttonMargin" onclick="ConfirmDelete(@item.ID)">
+                                Supprimer
+                            </button>
+
+                        </td>
+
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="ModalDelete" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-body">
+                Êtes vous sûr de vouloir Supprimer Ce Fournisseur ?
+            </div>
+            <div class="modal-footer">
+                <button class="btn buttonMargin" data-dismiss="modal">NON</button>
+                <button href="#" class="btn buttonMargin" onclick="DeleteProvider()">OUI</button>
+            </div>
+        </div>
+    </div>
+    <input type="hidden" id="hiddenProviderId" />
+</div>
+
+
+
+@section scripts {
+    <script>
+        var ConfirmDelete = function (ProviderID) {
+            $("#hiddenProviderId").val(ProviderID);
+            $("#ModalDelete").modal('show');
+        };
+
+        var DeleteProvider = function () {
+            var providerID = $("#hiddenProviderId").val();
+            console.log($("#hiddenProviderId").val(providerID));
+            $.ajax({
+                type: "POST",
+                url: "/Providers/DeleteProvider",
+                data: { ProviderID: providerID },
+                success: function (result) {
+                    $("#ModalDelete").modal('hide');
+                    $("#row_" + providerID).remove();
+                }
+            })
+        };
+    </script>
+}

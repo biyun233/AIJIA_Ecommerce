@@ -1,0 +1,93 @@
+﻿@model IEnumerable<AIJIA.Models.TypeArticle>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="row">
+    <button class="btn btnCreate">
+        @Html.ActionLink("Nouvelle Catégorie", "Create")
+    </button>
+</div>
+<div class="row container">
+    <div class="col-md-6">
+        <div class="">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col" class="text-center">ID</th>
+                        <th scope="col">@Html.DisplayNameFor(model => model.Name)</th>
+                        <th scope="col" class="text-center">Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+
+                        <tr id="row_@item.ID">
+                            <th scope="row"> @Html.DisplayFor(modelItem => item.ID)</th>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </td>
+                            <td class="d-flex">
+                                <button class="btn buttonMargin">
+                                    @Html.ActionLink("Editer", "Edit", new { id = item.ID })
+                                </button>
+
+                                <button class="btn btn-danger buttonMargin" onclick="ConfirmDelete(@item.ID)">
+                                    Supprimer
+                                </button>
+
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="ModalDelete" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-body">
+                Êtes vous sûr de vouloir Supprimer la Catégorie ?
+            </div>
+            <div class="modal-footer">
+                <button class="btn buttonMargin" data-dismiss="modal">NON</button>
+                <button href="#" class="btn buttonMargin" onclick="DeleteTypeArticle()">OUI</button>
+            </div>
+        </div>
+    </div>
+    <input type="hidden" id="hiddenTypeArticleId" />
+</div>
+
+
+
+@section scripts {
+    <script>
+        var ConfirmDelete = function (TypeArticleID) {
+            $("#hiddenTypeArticleId").val(TypeArticleID);
+            $("#ModalDelete").modal('show');
+        };
+
+        var DeleteTypeArticle = function () {
+            var typeArticleID = $("#hiddenTypeArticleId").val();
+            console.log($("#hiddenTypeArticleId").val(typeArticleID));
+            $.ajax({
+                type: "POST",
+                url: "/TypeArticles/DeleteTypeArticle",
+                data: { TypeArticleID: typeArticleID },
+                success: function (result) {
+                    $("#ModalDelete").modal('hide');
+                    $("#row_" + typeArticleID).remove();
+                }
+            })
+        };
+    </script>
+}
