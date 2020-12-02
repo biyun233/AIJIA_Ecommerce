@@ -22,7 +22,10 @@
                     <div class="caption">
                         <p>@item.Name</p>
                         <p>@item.Price €</p>
-                        <button>Ajouter au Panier</button>
+                        @using (Html.BeginForm("AddToCart", "Home", new { ArticleId = item.ArticleId, Quantity = 1 }, FormMethod.Post))
+                        {
+                            <button type="submit">Ajouter au Panier</button>
+                        }
                     </div>
                 </div>
             </a>

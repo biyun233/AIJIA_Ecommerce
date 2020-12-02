@@ -1,0 +1,128 @@
+﻿@using AIJIA.Models;
+@{
+    ViewBag.Title = "Cart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    decimal soustotal = 0;
+    decimal livraison = 10;
+}
+
+@if (Session["cart"] == null)
+{
+    <div>
+        <h2>Le panier est vide.</h2>
+    </div>
+}
+else {
+    <div class="row">
+        <div class="col-md-6">
+            <h3>Mon Panier</h3>
+            <hr />
+            <ul class="cart_box">
+                @foreach (CartItem item in (List<CartItem>)Session["cart"])
+                {
+
+                    string image = @item.Article.Description + ".jpg";
+                    soustotal = soustotal + @item.Article.Price * (decimal)@item.Quantity;
+                    decimal price = @item.Article.Price * (decimal)@item.Quantity;
+                    <li>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <img class="img-responsive" title="Click to View Product Detail"
+                                     style="cursor:pointer;height:160px;width:260px"
+                                     src="~/Images/@image" />
+                            </div>
+                            <div class="col-md-5">
+                                <p>@item.Article.Name</p>
+                                <p>@item.Article.Mark.Name</p>
+                                <p>Délais de livraison: Sous 48h</p>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="row">
+                                            <div class="col-md-5" style="margin-left: -9px;">
+                                                <a href="@Url.Action("ReduceOneCart","Home", new { ArticleId = @item.Article.ArticleId })">
+                                                    <span class="glyphicon glyphicon-minus-sign"></span>
+                                                </a>
+                                            </div>
+                                           
+                                            <div class="col-md-2" style="margin-left: -2px;">
+                                                <input style="width:30px;" type="submit" id="Quantity" name="Quantity" value=@item.Quantity min="1">
+                                            </div>
+                                            <div class="col-md-5" style=" margin-left: -16px;">
+                                                <a href="@Url.Action("AddOneCart","Home", new { ArticleId = @item.Article.ArticleId })">
+                                                    <span class="glyphicon glyphicon-plus-sign"></span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 cart_price">
+                                        <p>@price € </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-1">
+                                <a class="cart_title" href="@Url.Action("RemoveFromCart","Home", new { ArticleId = item.Article.ArticleId })">
+                                    <span class="glyphicon glyphicon-remove remove"></span>
+                                </a>
+                            </div>
+                        </div>
+                        <hr/>
+                    </li>
+                }
+            </ul>
+        </div>
+        <div class="col-md-offset-1 col-md-5">
+            <h3>Récapitulatif</h3>
+            <hr />
+            <div class="container caisse">
+                <div class="row">
+                    <div class="col-md-8">
+                        <p>
+                            Sous-total
+                        </p>
+                    </div>
+                    <div class="col-md-4">
+                        <span>@soustotal€</span>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-md-8">
+                        <p>
+                            Livraison
+                        </p>
+                    </div>
+                    <div class="col-md-4">
+                        <span>@livraison€</span>
+                    </div>
+                </div>
+                @{
+                    decimal total = @soustotal + @livraison;
+                    decimal tva = total * (decimal)0.20;
+                }
+                <hr />
+                <div class="row">
+                    <div class="col-md-8">
+                        <p>
+                            dont TVA
+                        </p>
+                    </div>
+                    <div class="col-md-4">
+                        <span>@tva.ToString()€</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-8">
+                        <p>
+                            Total
+                        </p>
+                    </div>
+                    <div class="col-md-4">
+                        <span>@total€</span>
+                    </div>
+                </div>
+                <button class="btn-submit">Valider La Commande</button>
+            </div>
+            
+        </div>
+    </div>
+                    }

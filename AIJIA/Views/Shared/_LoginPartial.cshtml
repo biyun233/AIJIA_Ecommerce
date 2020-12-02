@@ -5,26 +5,17 @@
     {
         @Html.AntiForgeryToken()
 
-        <ul class="nav navbar-nav navbar-right icon">
-            <li>
-                <a href="/Manage/Index" title="Manage" style="margin-bottom:8px;">
-                    <span class="glyphicon glyphicon-user"></span>
-                    <span>Mon Compte</span>
-                </a>
-            </li>
-
-        </ul>
+            <a href="/Manage/Index" title="Manage" style="margin-bottom:8px;">
+                <span class="glyphicon glyphicon-user"></span>
+                <span>Mon Compte</span>
+            </a>   
+          
     }
 }
 else
 {
-    <ul class="nav navbar-nav navbar-right icon">
-
-        <li>
-            <a href="/Account/Login" title="Manage">
-                <span class="glyphicon glyphicon-user"></span>
-                <span>Connexion</span>
-            </a>
-        </li>
-    </ul>
+    <a href="/Account/Login" title="Manage">
+        <span class="glyphicon glyphicon-user"></span>
+        <span>Connexion</span>
+    </a>
 }

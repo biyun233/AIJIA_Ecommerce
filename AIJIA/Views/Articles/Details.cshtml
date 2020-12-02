@@ -3,8 +3,13 @@
 @{
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var message = TempData["AlertMessage"] ?? string.Empty;
 }
-
+<script type="text/javascript">
+var message = '@message';
+if(message)
+    alert(message);
+</script>
 <div class="row content">
     @{
         string image = @Model.Description + ".jpg";
@@ -18,90 +23,17 @@
         <p class="article_title">@Model.Name</p>
         <p class="article_mark"> @Model.Mark.Name</p>
         <p class="article_price">@Model.Price € <small style="font-size:20px;">dont TVA</small></p>
-        <hr/>
+        <hr />
         <p class="livre"> Livré sous 48h</p>
-        <button class="btn-submit">Ajouter au Panier</button>
+        @using (Html.BeginForm("AddToCartDetails", "Home", new { ArticleId = Model.ArticleId }, FormMethod.Post))
+        {
+            <p>Quantity: <input type="number" id="Quantity" name="Quantity" value="1" min="1" max="10"></p>
+
+            <button type="submit" class="btn-submit">Ajouter au Panier</button>
+        }
+
+
     </div>
 </div>
 
-@*<div>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Mark.Name)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Mark.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Provider.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Provider.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.TypeArticle.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TypeArticle.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Color)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Color)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Size)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Size)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Price)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Price)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.QuantityStock)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.QuantityStock)
-        </dd>
-
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ArticleId }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>*@

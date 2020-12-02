@@ -26,7 +26,7 @@ namespace AIJIA.Controllers
         // GET: 4 premiers Articles
         public ActionResult Home_list()
         {
-            var articles = db.Articles.Include(a => a.Mark).Include(a => a.Provider).Include(a => a.TypeArticle);
+            var articles = db.Articles.Where((a) => a.QuantityStock > 0);
             return View(articles.OrderByDescending(a => a.ArticleId).Take(4));
 
         }

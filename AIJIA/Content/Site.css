@@ -82,6 +82,39 @@ body {
     padding-bottom: 20px;
 }
 
+.remove {
+    margin-top: 20px;
+    margin-left: 14px;
+}
+
+.cart_title {
+    background: white;
+    margin-left: 2px;
+}
+
+/* Shopping Cart */
+
+
+.cart_price {
+    margin-left: 122px;
+    margin-top: 15px;
+}
+
+
+.caisse {
+    height: 350px;
+    width: 450px;
+    border: 1px solid lightgrey;
+    padding: 40px;
+}
+
+    .caisse .row {
+        margin: 21px;
+    }
+
+    .caisse button {
+        margin-left: 106px;
+    }
 
 /*Login page*/
 .loginbox {
