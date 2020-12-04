@@ -14,8 +14,8 @@ namespace AIJIA.Models
         public int ArticleID { get; set; }
         public virtual Article Article { get; set; }
 
-        [ForeignKey("User")]
-        public int UserID { get; set; }
-        public virtual User User { get; set; }
+        //[ForeignKey("User")]
+        public string UserID { get; set; }
+        //public virtual User User { get; set; }
     }
 }

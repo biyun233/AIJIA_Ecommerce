@@ -4,6 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.UI;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin.Security;
 using AIJIA.Models;
 
 namespace AIJIA.Controllers
@@ -21,11 +24,44 @@ namespace AIJIA.Controllers
             return View();
         }
 
+        public ActionResult AddOrder()
+        {
+            List<CartItem> cart = (List<CartItem>)Session["cart"];
+            decimal total = 0;
+            decimal delivery = 10;
+            //Save Order
+            Order order = new Order();
+            order.DateOrder = DateTime.Now;
+            order.UserID = User.Identity.GetUserId();
+            db.Orders.Add(order);
+
+            db.SaveChanges();
+
+            //Save Order Details
+            foreach (var item in cart)
+            {
+                OrderDetails orderDetails = new OrderDetails();
+                orderDetails.ArticleId = item.Article.ArticleId;
+                orderDetails.Quantity = item.Quantity;
+                orderDetails.Price = item.Article.Price;
+                orderDetails.OrderId = order.ID;
+                db.OrderDetails.Add(orderDetails);
+                db.SaveChanges();
+                total = total + item.Quantity * item.Article.Price;
+            }
+
+            order = db.Orders.Find(order.ID);
+            order.TotalAmount = total;
+            order.AmountDelivery = delivery;
+            
+            db.SaveChanges();
+            Session.Remove("cart");
+            return Redirect(Request.UrlReferrer.AbsoluteUri);
+        }
         public ActionResult AddToCart(int ArticleId)
         {
             if(Session["cart"] == null)
             {
-                Console.WriteLine("Cart est null");
                 var article = db.Articles.Find(ArticleId);
                 List<CartItem> cart = new List<CartItem>();
                 cart.Add(new CartItem()

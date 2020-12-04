@@ -6,7 +6,7 @@ namespace AIJIA.Models
     public class User
     {
         [Key]
-        public int ID { get; set; }
+        public string ID { get; set; }
         public string Lastename { get; set; }
         public string Firstname { get; set; }
         public string Password { get; set; }

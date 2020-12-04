@@ -87,6 +87,7 @@ public class UserRole : IdentityRole
         public virtual DbSet<Provider> Providers { get; set; }
         public virtual DbSet<Article> Articles { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
+        public virtual DbSet<OrderDetails> OrderDetails { get; set; }
         public virtual DbSet<StatusOrder> StatusOrders { get; set; }
         
 

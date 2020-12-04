@@ -120,9 +120,12 @@ else {
                         <span>@total€</span>
                     </div>
                 </div>
-                <button class="btn-submit">Valider La Commande</button>
-            </div>
+                @using (Html.BeginForm("AddOrder", "Home", FormMethod.Post))
+                {
+                    <button type="submit" class="btn-submit">Valider La Commande</button>
+                }
+                </div>
             
         </div>
     </div>
-                    }
+}
