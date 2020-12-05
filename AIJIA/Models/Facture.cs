@@ -8,9 +8,7 @@ namespace AIJIA.Models
         [Key]
         public int ID { get; set; }
 
-        [ForeignKey("Order")]
-        public int OrderID { get; set; }
-        public virtual Order Order { get; set; }      
+    
         public DateTime DateFacture { get; set; }
         public decimal Vat { get; set; }
         public decimal ExclVat { get; set; }

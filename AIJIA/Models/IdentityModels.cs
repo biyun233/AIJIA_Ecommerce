@@ -88,6 +88,7 @@ public class UserRole : IdentityRole
         public virtual DbSet<Article> Articles { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<OrderDetails> OrderDetails { get; set; }
+        public virtual DbSet<Facture> Factures { get; set; }
         public virtual DbSet<StatusOrder> StatusOrders { get; set; }
         
 

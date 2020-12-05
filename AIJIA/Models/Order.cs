@@ -11,12 +11,11 @@ namespace AIJIA.Models
         public int ID { get; set; }
         public DateTime DateOrder { get; set; }
 
-        //[ForeignKey("User")]
+
         public string UserID { get; set; }
-        //public virtual User User { get; set; }
 
+        public int FactureID { get; set; }
 
-        //public decimal AmountArticle { get; set; }
         public decimal AmountDelivery { get; set; }
         public decimal TotalAmount { get; set; }
 

@@ -29,10 +29,18 @@ namespace AIJIA.Controllers
             List<CartItem> cart = (List<CartItem>)Session["cart"];
             decimal total = 0;
             decimal delivery = 10;
+
+            //Save Facture
+            Facture facture = new Facture();
+            facture.DateFacture = DateTime.Now;
+            db.Factures.Add(facture);
+
+            db.SaveChanges();
             //Save Order
             Order order = new Order();
             order.DateOrder = DateTime.Now;
             order.UserID = User.Identity.GetUserId();
+            order.FactureID = facture.ID;
             db.Orders.Add(order);
 
             db.SaveChanges();
@@ -53,7 +61,11 @@ namespace AIJIA.Controllers
             order = db.Orders.Find(order.ID);
             order.TotalAmount = total;
             order.AmountDelivery = delivery;
-            
+
+            facture = db.Factures.Find(facture.ID);
+            facture.Vat = total * (decimal)0.2;
+            facture.InclVat = total;
+            facture.ExclVat = total - facture.Vat;
             db.SaveChanges();
             Session.Remove("cart");
             return Redirect(Request.UrlReferrer.AbsoluteUri);
