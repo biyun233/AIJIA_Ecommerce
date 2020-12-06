@@ -10,7 +10,7 @@ namespace AIJIA.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            return RedirectToAction("Home_list", "Articles");
         }
 
         public ActionResult About()

@@ -8,7 +8,7 @@
     @Scripts.Render("~/bundles/modernizr")
 
 
-   
+
 </head>
 <body class="bodyStyle">
     <div class="aijia">AIJIA</div>
@@ -18,7 +18,7 @@
                 GESTION
             </div>
             <ul class="list-unstyled components">
-               
+
                 <li>
                     <a href="#menuAijia" data-toggle="collapse" aria-expanded="false">Commandes</a>
                     <ul class="collapse list-unstyled" id="menuAijia">
@@ -54,13 +54,13 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="#">Utilisateurs</a>
+                    @Html.ActionLink("Utilisateurs", "Index", "AdminUsers")
                 </li>
                 <li>
                     <a href="#">Messages</a>
                 </li>
                 <li>
-                    <a href="#">Site</a>
+                    @Html.ActionLink("Site", "Index", "Home")
                 </li>
                 <li>
                     <a href="#">Déconnexion</a>
@@ -68,12 +68,12 @@
             </ul>
         </nav>
         <div id="content">
-           
-            
+
+
             <div>
                 @RenderBody()
             </div>
-            
+
 
         </div>
     </div>

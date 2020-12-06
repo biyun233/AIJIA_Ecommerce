@@ -58,6 +58,7 @@ namespace AIJIA.Models
         public string ConfirmPassword { get; set; }
     }
 
+    // Changement d'Adresse 
     public class ChangeAddressViewModel
     {
         [Required]
@@ -77,6 +78,9 @@ namespace AIJIA.Models
         [Display(Name = "Pays")]
         public string Country { get; set; }
     }
+
+    // Changement de Rôle
+   
 
     public class ChangeProfilViewModel
     {

@@ -1,6 +1,9 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Collections.Generic;
+using System.Web;
+using System.ComponentModel;
 namespace AIJIA.Models
 {
     public class Article
@@ -46,5 +49,11 @@ namespace AIJIA.Models
         [Required(ErrorMessage = "Le Quantité doit être indiquée !")]
         [Display(Name = "Quantité")]
         public int QuantityStock { get; set; }
+
+        //[Display(Name = "Image")]
+        //public string ImagePath { get; set; }
+
+        ////[NotMapped]
+        //public HttpPostedFileBase ImageFile { get; set; }
     }
 }

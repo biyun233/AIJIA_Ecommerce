@@ -19,6 +19,24 @@ namespace AIJIA.Controllers
         {
             var articles = db.Articles.Include(a => a.Mark).Include(a => a.Provider).Include(a => a.TypeArticle);
             return View(articles.ToList());
+
+
+        }
+
+        // GET: 4 premiers Articles
+        public ActionResult Home_list()
+        {
+            var articles = db.Articles.Include(a => a.Mark).Include(a => a.Provider).Include(a => a.TypeArticle);
+            return View(articles.OrderByDescending(a => a.ArticleId).Take(4));
+
+        }
+
+        // GET: Articles by Type
+        public ActionResult Articles_type(string type)
+        {
+            var articles = db.Articles.Where((a) => a.TypeArticle.Name == type);
+            return View(articles.ToList());
+
         }
 
         // GET: Articles/Details/5

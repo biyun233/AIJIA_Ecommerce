@@ -15,6 +15,7 @@ namespace AIJIA.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private ApplicationDbContext db = new ApplicationDbContext();
 
         public ManageController()
         {
@@ -221,6 +222,7 @@ namespace AIJIA.Controllers
             return View();
         }
 
+
         //
         // POST: /Manage/ChangePassword
         [HttpPost]
@@ -245,7 +247,7 @@ namespace AIJIA.Controllers
             return View(model);
         }
 
-        //
+
         // GET: /Manage/ChangeAddress
         public ActionResult ChangeAddress()
         {
@@ -262,6 +264,8 @@ namespace AIJIA.Controllers
             {
                 return View(model);
             }
+           
+
             var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
             user.Address = model.Address;
             user.PostalCode = model.PostalCode;
@@ -293,6 +297,12 @@ namespace AIJIA.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> ChangeProfil(ChangeProfilViewModel model)
         {
+            //
+            
+            //string currentUserId = User.Identity.GetUserId();
+            //ApplicationUser currentUser = db.Users.FirstOrDefault(x => x.Id == currentUserId);
+            //
+
             if (!ModelState.IsValid)
             {
                 return View(model);

@@ -12,6 +12,7 @@ namespace AIJIA.Models
     // Vous pouvez ajouter des données de profil pour l'utilisateur en ajoutant d'autres propriétés à votre classe ApplicationUser. Pour en savoir plus, consultez https://go.microsoft.com/fwlink/?LinkID=317594.
     public class ApplicationUser : IdentityUser
     {
+       
 
         [Display(Name = "Nom")]
         public string Lastename { get; set; }
@@ -54,7 +55,7 @@ namespace AIJIA.Models
             var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
             // Ajouter les revendications personnalisées de l’utilisateur ici
             userIdentity.AddClaim(new Claim("Firstname", this.Firstname));
-            userIdentity.AddClaim(new Claim("Lastname", this.Lastename));
+            userIdentity.AddClaim(new Claim("Lastename", this.Lastename));
             userIdentity.AddClaim(new Claim("PostalCode", this.PostalCode));
             userIdentity.AddClaim(new Claim("City", this.City));
             userIdentity.AddClaim(new Claim("Country", this.Country));
