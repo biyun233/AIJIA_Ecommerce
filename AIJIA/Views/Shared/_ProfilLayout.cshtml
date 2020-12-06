@@ -45,12 +45,12 @@
                                 {
                                     foreach (CartItem item in (List<CartItem>)Session["cart"])
                                     {
-                                    <li>
-                                        <a class="cart_title" href="@Url.Action(" RemoveFromCart","Home", new { ArticleId=item.Article.ArticleId })">
-                                            <span>@item.Article.Name (@item.Quantity)</span>
-                                            <span class="glyphicon glyphicon-remove remove"></span>
-                                        </a>
-                                    </li>
+                                        <li>
+                                            <a class="cart_title" href="@Url.Action(" RemoveFromCart","Home", new { ArticleId=item.Article.ArticleId })">
+                                                <span>@item.Article.Name (@item.Quantity)</span>
+                                                <span class="glyphicon glyphicon-remove remove"></span>
+                                            </a>
+                                        </li>
                                     }
                                 }
                                 <li class="divider"></li>
@@ -108,4 +108,6 @@
     @RenderSection("scripts", required: false)
 </body>
 </html>
+
+
 

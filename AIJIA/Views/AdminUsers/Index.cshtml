@@ -1,0 +1,111 @@
+﻿@model List<AIJIA.Models.ApplicationUser>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@using Microsoft.AspNet.Identity
+@using System.Security.Claims;
+
+
+@{
+    var user = (System.Security.Claims.ClaimsIdentity)User.Identity;
+}
+
+
+
+<div class="row container">
+    <div class="col-md-8">
+        <div class="">
+            <table class="table">
+                <thead>
+                    <tr>
+
+                        <th scope="col">Nom</th>
+                        <th scope="col">Prénom</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Tel</th>
+                        <th scope="col">IsAdmin</th>
+                        <th scope="col" class="text-center">Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+
+                        <tr id="row_@item.Id">
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Lastename)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Firstname)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Email)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Phone)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.IsAdmin)
+                            </td>
+                            <td class="d-flex">
+                                <button class="btn buttonMargin">
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.Id })
+                                </button>
+                                <button class="btn btn-danger buttonMargin" onclick="ConfirmDelete(@item.Id)">
+                                    Supprimer
+                                </button>
+                            </td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="ModalDelete" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-body">
+                Êtes vous sûr de vouloir Supprimer cet Utilisateur ?
+            </div>
+            <div class="modal-footer">
+                <button class="btn buttonMargin" data-dismiss="modal">NON</button>
+                <button href="#" class="btn buttonMargin" onclick="DeleteUser()">OUI</button>
+            </div>
+        </div>
+    </div>
+    <input type="hidden" id="hiddenUserId" />
+</div>
+
+
+
+@section scripts {
+    <script>
+        var ConfirmDelete = function (UserID) {
+            $("#hiddenUserId").val(UserID);
+            $("#ModalDelete").modal('show');
+        };
+        var DeleteUser = function () {
+            var userID = $("#hiddenUserId").val();
+            console.log($("#hiddenUserId").val(userID));
+            $.ajax({
+                type: "POST",
+                url: "/AdminUsers/DeleteUser",
+                data: { UserID: userID },
+                success: function (result) {
+                    $("#ModalDelete").modal('hide');
+                    $("#row_" + userID).remove();
+                }
+            })
+        };
+    </script>
+}
+

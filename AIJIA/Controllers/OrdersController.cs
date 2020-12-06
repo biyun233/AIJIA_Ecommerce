@@ -115,6 +115,13 @@ namespace AIJIA.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult ShowpopUp(int id)
+        {
+            var order = db.Orders.FirstOrDefault(x => x.ID == id);
+
+            //specify the name or path of the partial view
+            return PartialView("_FactureDetails", order);
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)

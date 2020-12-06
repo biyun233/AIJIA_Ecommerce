@@ -32,13 +32,13 @@ namespace AIJIA.Controllers
 
             //Save Facture
             Facture facture = new Facture();
-            facture.DateFacture = DateTime.Now;
+            facture.DateFacture = DateTime.UtcNow.Date;
             db.Factures.Add(facture);
 
             db.SaveChanges();
             //Save Order
             Order order = new Order();
-            order.DateOrder = DateTime.Now;
+            order.DateOrder = DateTime.UtcNow.Date;
             order.UserID = User.Identity.GetUserId();
             order.FactureID = facture.ID;
             db.Orders.Add(order);
@@ -59,7 +59,7 @@ namespace AIJIA.Controllers
             }
 
             order = db.Orders.Find(order.ID);
-            order.TotalAmount = total;
+            order.TotalAmount = total + delivery;
             order.AmountDelivery = delivery;
 
             facture = db.Factures.Find(facture.ID);

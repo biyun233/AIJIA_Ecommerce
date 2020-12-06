@@ -1,0 +1,80 @@
+﻿@model AIJIA.Models.Order
+@using AIJIA.Models;
+@{
+    ApplicationDbContext db = new ApplicationDbContext();
+    var user = db.Users.FirstOrDefault(x => x.Id == Model.UserID);
+    var list = db.OrderDetails.Where(x => x.OrderId == Model.ID).ToList();
+    var facture = db.Factures.FirstOrDefault(x => x.ID == Model.FactureID);
+}
+
+<div>
+    <div style="text-align:center;">
+        <h3>AIJIA</h3>
+        <h4>Facture N°: @Model.FactureID</h4>
+        <h4>Commande N°: @Model.ID</h4>
+        <h4>Date d'émission: @Model.DateOrder</h4>
+        <hr />
+    </div>
+    <div style="text-align:center;">
+        <h3>Adresse de Livraison</h3>
+        <p>@user.Lastename @user.Firstname</p>
+        <p>@user.Address</p>
+        <p>@user.PostalCode @user.City</p>
+        <p>@user.Country</p>
+        <p>@user.Phone</p>
+        <hr />
+    </div>
+    <div style="text-align:center;">
+        <h3>Récapitulatif De La Commande</h3>
+        <table class="table">
+            <tr>
+                <th>
+                    <p>Référence</p>
+                </th>
+                <th>
+                    <p>Quantité</p>
+                </th>
+                <th>
+                    <p>Prix Unitaire</p>
+                </th>
+                <th>
+                    <p>Total TTC</p>
+                </th>
+                
+            </tr>
+            @foreach (var item in list)
+            {
+                
+                decimal total = (decimal)@item.Quantity * @item.Price;
+                
+                <tr>
+                    <td>
+                        @item.ArticleId
+                    </td>
+                    <td>
+                        @item.Quantity
+                    </td>
+                    <td>
+                        @item.Price €
+                    </td>
+                    <td>
+                         @total € 
+                    </td>
+           
+                </tr>
+            }
+        </table>
+        <p>Frai de livraison: @Model.AmountDelivery €</p>
+        <p>Somme HT: @facture.ExclVat €</p>
+        <p>Motant TVA: @facture.Vat €</p>
+        <p>Total TTC: @facture.InclVat €</p>
+        <hr />
+    </div>
+    <div style="text-align:center;">
+        <h5>AIJIA Société Anonyme SA</h5>
+        <h5>Siege Social Grenoble 38000</h5>
+        <h5>Telephone: 0626585713 </h5>
+        <h5>Email: aijia@aijia.com</h5>
+    </div>
+</div>
+

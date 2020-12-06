@@ -43,7 +43,8 @@
                 @user.Lastename
             </td>
             <td>
-                @Html.ActionLink("Voir", "Details", new { id = item.ID })
+                <a class="btn btn-default btn-sm" id="@item.ID" onclick="Details(this.id)">Voir</a>
+                @*@Html.ActionLink("Voir", "Details", new { id = item.ID })*@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.AmountDelivery)€
@@ -60,3 +61,34 @@
     }
 
 </table>
+
+<div class="modal fade" id="myModal" role="document">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Details</h4>
+            </div>
+            <div class="modal-body">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script>
+        function Details(id) {
+            $.get("@Url.Action("ShowpopUp","Orders")/" + id,
+                function (data) {
+                    $('.modal-body').html(data);
+                });
+
+                $("#myModal").modal("show");
+        }
+    </script>
+}
