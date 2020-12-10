@@ -24,51 +24,61 @@ namespace AIJIA.Controllers
             return View();
         }
 
+        public ActionResult Valide()
+        {
+            return View();
+        }
         public ActionResult AddOrder()
         {
-            List<CartItem> cart = (List<CartItem>)Session["cart"];
-            decimal total = 0;
-            decimal delivery = 10;
-
-            //Save Facture
-            Facture facture = new Facture();
-            facture.DateFacture = DateTime.UtcNow.Date;
-            db.Factures.Add(facture);
-
-            db.SaveChanges();
-            //Save Order
-            Order order = new Order();
-            order.DateOrder = DateTime.UtcNow.Date;
-            order.UserID = User.Identity.GetUserId();
-            order.FactureID = facture.ID;
-            db.Orders.Add(order);
-
-            db.SaveChanges();
-
-            //Save Order Details
-            foreach (var item in cart)
+            if (!Request.IsAuthenticated)
             {
-                OrderDetails orderDetails = new OrderDetails();
-                orderDetails.ArticleId = item.Article.ArticleId;
-                orderDetails.Quantity = item.Quantity;
-                orderDetails.Price = item.Article.Price;
-                orderDetails.OrderId = order.ID;
-                db.OrderDetails.Add(orderDetails);
-                db.SaveChanges();
-                total = total + item.Quantity * item.Article.Price;
+                return RedirectToAction("Login", "Account");
             }
+            else {
+                List<CartItem> cart = (List<CartItem>)Session["cart"];
+                decimal total = 0;
+                decimal delivery = 10;
 
-            order = db.Orders.Find(order.ID);
-            order.TotalAmount = total + delivery;
-            order.AmountDelivery = delivery;
+                //Save Facture
+                Facture facture = new Facture();
+                facture.DateFacture = DateTime.UtcNow.Date;
+                db.Factures.Add(facture);
 
-            facture = db.Factures.Find(facture.ID);
-            facture.Vat = total * (decimal)0.2;
-            facture.InclVat = total;
-            facture.ExclVat = total - facture.Vat;
-            db.SaveChanges();
-            Session.Remove("cart");
-            return Redirect(Request.UrlReferrer.AbsoluteUri);
+                db.SaveChanges();
+                //Save Order
+                Order order = new Order();
+                order.DateOrder = DateTime.UtcNow.Date;
+                order.UserID = User.Identity.GetUserId();
+                order.FactureID = facture.ID;
+                db.Orders.Add(order);
+
+                db.SaveChanges();
+
+                //Save Order Details
+                foreach (var item in cart)
+                {
+                    OrderDetails orderDetails = new OrderDetails();
+                    orderDetails.ArticleId = item.Article.ArticleId;
+                    orderDetails.Quantity = item.Quantity;
+                    orderDetails.Price = item.Article.Price;
+                    orderDetails.OrderId = order.ID;
+                    db.OrderDetails.Add(orderDetails);
+                    db.SaveChanges();
+                    total = total + item.Quantity * item.Article.Price;
+                }
+
+                order = db.Orders.Find(order.ID);
+                order.TotalAmount = total + delivery;
+                order.AmountDelivery = delivery;
+
+                facture = db.Factures.Find(facture.ID);
+                facture.Vat = total * (decimal)0.2;
+                facture.InclVat = total;
+                facture.ExclVat = total - facture.Vat;
+                db.SaveChanges();
+                Session.Remove("cart");
+                return RedirectToAction("Valide", "Home");
+            }
         }
         public ActionResult AddToCart(int ArticleId)
         {

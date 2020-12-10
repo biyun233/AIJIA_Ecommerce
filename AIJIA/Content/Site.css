@@ -36,6 +36,20 @@
     background-color: #B490B9;
 }
 
+.compte_icon {
+    color: black;
+
+}
+    .compte_icon:hover,
+    .compte_icon:focus {
+        color: black;
+
+    }
+
+.cart {
+    background-color: transparent;
+    margin-left: 18px;
+}
 .no-border {
     border: 0;
     border-bottom: 1px solid;
@@ -90,6 +104,14 @@ body {
 .cart_title {
     background: white;
     margin-left: 2px;
+}
+
+.admin {
+    margin-left: -9px;
+}
+
+.user {
+    margin-left: 8px;
 }
 
 /* Shopping Cart */

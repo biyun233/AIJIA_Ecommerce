@@ -1,20 +1,35 @@
 ﻿@using Microsoft.AspNet.Identity
+@using System.Security.Claims;
+
+@{
+    var user = (System.Security.Claims.ClaimsIdentity)User.Identity;
+}
 @if (Request.IsAuthenticated)
 {
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
     {
         @Html.AntiForgeryToken()
-
-            <a href="/Manage/Index" title="Manage">
-                <span class="glyphicon glyphicon-user"></span>
+        if (@user.FindFirstValue("IsAdmin") == "false")
+        {
+            <a href="/Manage/Index" title="Manage" class="compte_icon">
+                <span class="glyphicon glyphicon-user user"></span>
                 <span>Mon Compte</span>
-            </a>   
-          
+            </a>
+
+        }
+        else
+        {
+            <a href="/Admin/Admin" title="Manage" class="compte_icon">
+                <span class="glyphicon glyphicon-user admin "></span>
+                <span>Admin</span>
+            </a>
+
+        }
     }
 }
 else
 {
-    <a href="/Account/Login" title="Manage">
+    <a href="/Account/Login" title="Manage" class="compte_icon">
         <span class="glyphicon glyphicon-user"></span>
         <span>Connexion</span>
     </a>
