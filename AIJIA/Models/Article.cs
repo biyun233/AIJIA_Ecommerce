@@ -13,7 +13,7 @@ namespace AIJIA.Models
         public string Name { get; set; }
 
         
-        [Display(Name = "Description")]
+        [Display(Name = "Image")]
         public string Description { get; set; }
 
         [Display(Name = "Catégorie")]

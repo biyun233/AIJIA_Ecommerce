@@ -20,6 +20,15 @@ namespace AIJIA.Controllers
             return View(db.Orders.ToList());
         }
 
+
+        // GET: User Orders List
+        public ActionResult UserOrders(string UserID)
+        {
+            var orderData = db.Orders.Where((order) => order.UserID == UserID);
+            return View(orderData.ToList());
+        }
+        //
+
         // GET: Orders/Details/5
         public ActionResult Details(int? id)
         {
@@ -89,31 +98,21 @@ namespace AIJIA.Controllers
             return View(order);
         }
 
-        // GET: Orders/Delete/5
-        public ActionResult Delete(int? id)
+        // Delete With Ajax
+        public JsonResult DeleteOrder(int OrderID)
         {
-            if (id == null)
+            bool result = false;
+            Order order = db.Orders.Where(x => x.ID == OrderID).SingleOrDefault();
+            if (order != null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                db.Orders.Remove(order);
+                db.SaveChanges();
+                result = true;
             }
-            Order order = db.Orders.Find(id);
-            if (order == null)
-            {
-                return HttpNotFound();
-            }
-            return View(order);
-        }
 
-        // POST: Orders/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Order order = db.Orders.Find(id);
-            db.Orders.Remove(order);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            return Json(result, JsonRequestBehavior.AllowGet);
         }
+      
 
         public ActionResult ShowpopUp(int id)
         {

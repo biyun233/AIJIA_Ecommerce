@@ -2,6 +2,14 @@
 <!DOCTYPE html>
 <html>
 <head>
+    @using Microsoft.AspNet.Identity
+    @using System.Security.Claims;
+
+
+    @{
+        var user = (System.Security.Claims.ClaimsIdentity)User.Identity;
+    }
+
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -75,7 +83,7 @@
                     <li>@Html.ActionLink("Déco", "Articles_type", "Articles", routeValues: new { type = "Déco" }, htmlAttributes: null)</li>
                     <li>@Html.ActionLink("Jardin", "Articles_type", "Articles", routeValues: new { type = "Jardin" }, htmlAttributes: null)</li>
                     <li>@Html.ActionLink("Meubles", "Articles_type", "Articles", routeValues: new { type = "Meubles" }, htmlAttributes: null)</li>
-                    <li>@Html.ActionLink("Admin", "Admin", "Admin")</li>
+                    
                 </ul>
             </div>
         </div>

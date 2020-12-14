@@ -164,7 +164,7 @@ namespace AIJIA.Controllers
                     Sex = model.Sex,
                     Birthday = model.Birthday,
                     Address = model.Address,
-                    IsAdmin = "false"
+                    IsAdmin = "User"
                 };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)

@@ -15,6 +15,7 @@ namespace AIJIA.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private ApplicationDbContext db = new ApplicationDbContext();
 
         public ManageController()
         {
@@ -215,6 +216,9 @@ namespace AIJIA.Controllers
         }
 
         //
+
+      
+
         // GET: /Manage/ChangePassword
         public ActionResult ChangePassword()
         {

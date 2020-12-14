@@ -7,60 +7,76 @@
     ApplicationDbContext db = new ApplicationDbContext();
 }
 
-<h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.DateOrder)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UserID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FactureID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AmountDelivery)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TotalAmount)
-        </th>
-        <th></th>
-    </tr>
+<div class="row container">
+    <div class="col-md-12">
+        <div class="">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>
+                            Date
+                        </th>
+                        <th>
+                            Client
+                        </th>
+                        <th>
+                            Facture
+                        </th>
+                        <th>
+                            M. Livraison
+                        </th>
 
-    @foreach (var item in Model)
-    {
-        var user = db.Users.Find(item.UserID);
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateOrder)
-            </td>
-            <td>
-                @user.Lastename
-            </td>
-            <td>
-                <a class="btn btn-default btn-sm" id="@item.ID" onclick="Details(this.id)">Voir</a>
-                @*@Html.ActionLink("Voir", "Details", new { id = item.ID })*@
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AmountDelivery)€
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TotalAmount)€
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
-            </td>
-        </tr>
-    }
+                        <th>
+                            M. Total
+                        </th>
 
-</table>
+                        <th class="">Actions</th>
+
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        var user = db.Users.Find(item.UserID);
+                    <tr id="row_@item.ID">
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ID)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DateOrder)
+                        </td>
+                        <td>
+                            @user.Lastename
+                        </td>
+                        <td>
+                            <a class="btn btn-default btn-sm" id="@item.ID" onclick="Details(this.id)">Voir</a>
+                            @*@Html.ActionLink("Voir", "Details", new { id = item.ID })*@
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AmountDelivery)€
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TotalAmount)€
+                        </td>
+
+                        <td>
+                            <button class="btn btn-danger" onclick="ConfirmDelete(@item.ID)">
+                                Supprimer
+                            </button>
+                        </td>
+
+
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
 
 <div class="modal fade" id="myModal" role="document">
     <div class="modal-dialog">
@@ -69,15 +85,33 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Details</h4>
+                <h4 class="modal-title text-center">FACTURE</h4>
             </div>
             <div class="modal-body">
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">FERMER</button>
             </div>
         </div>
     </div>
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="ModalDelete" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-body">
+                Êtes vous sûr de vouloir Supprimer cette Commande ?
+            </div>
+            <div class="modal-footer">
+                <button class="btn buttonMargin" data-dismiss="modal">NON</button>
+                <button href="#" class="btn buttonMargin" onclick="DeleteOrder()">OUI</button>
+            </div>
+        </div>
+    </div>
+    <input type="hidden" id="hiddenOrderId" />
 </div>
 
 @section scripts{
@@ -90,5 +124,34 @@
 
                 $("#myModal").modal("show");
         }
+
+        // Delete
+        var ConfirmDelete = function (OrderID) {
+            $("#hiddenOrderId").val(OrderID);
+            $("#ModalDelete").modal('show');
+        };
+
+        var DeleteOrder = function () {
+            var orderID = $("#hiddenOrderId").val();
+            console.log($("#hiddenOrderId").val(orderID));
+            $.ajax({
+                type: "POST",
+                url: "/Orders/DeleteOrder",
+                data: { OrderID: orderID },
+                success: function (result) {
+                    $("#ModalDelete").modal('hide');
+                    $("#row_" + orderID).remove();
+                }
+            })
+        };
+
+
     </script>
 }
+
+
+
+
+
+
+

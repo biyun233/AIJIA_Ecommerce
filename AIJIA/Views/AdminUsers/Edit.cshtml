@@ -104,8 +104,8 @@
                 @Html.LabelFor(model => model.IsAdmin, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
 
-                    @Html.RadioButtonFor(model => model.IsAdmin, "true") Admin&nbsp;&nbsp;
-                    @Html.RadioButtonFor(model => model.IsAdmin, "false") User
+                    @Html.RadioButtonFor(model => model.IsAdmin, "Admin") Admin&nbsp;&nbsp;
+                    @Html.RadioButtonFor(model => model.IsAdmin, "User") User
                     @Html.ValidationMessageFor(model => model.IsAdmin, "", new { @class = "text-danger" })
 
                 </div>

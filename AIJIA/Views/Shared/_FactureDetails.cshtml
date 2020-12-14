@@ -10,18 +10,18 @@
 <div>
     <div style="text-align:center;">
         <h3>AIJIA</h3>
-        <h4>Facture N°: @Model.FactureID</h4>
-        <h4>Commande N°: @Model.ID</h4>
-        <h4>Date d'émission: @Model.DateOrder</h4>
+        <h4><strong>Facture N°</strong> : @Model.FactureID</h4>
+        <h4><strong>Commande N°</strong> : @Model.ID</h4>
+        <h4><strong>Date d'émission</strong> : @Model.DateOrder</h4>
         <hr />
     </div>
     <div style="text-align:center;">
         <h3>Adresse de Livraison</h3>
-        <p>@user.Lastename @user.Firstname</p>
-        <p>@user.Address</p>
-        <p>@user.PostalCode @user.City</p>
-        <p>@user.Country</p>
-        <p>@user.Phone</p>
+        <p><strong>@user.Lastename @user.Firstname</strong></p>
+        <p><strong>@user.Address</strong></p>
+        <p><strong>@user.PostalCode @user.City</strong></p>
+        <p><strong>@user.Country</strong></p>
+        <p><strong>@user.Phone</strong></p>
         <hr />
     </div>
     <div style="text-align:center;">
@@ -40,13 +40,13 @@
                 <th>
                     <p>Total TTC</p>
                 </th>
-                
+
             </tr>
             @foreach (var item in list)
             {
-                
+
                 decimal total = (decimal)@item.Quantity * @item.Price;
-                
+
                 <tr>
                     <td>
                         @item.ArticleId
@@ -58,23 +58,23 @@
                         @item.Price €
                     </td>
                     <td>
-                         @total € 
+                        @total €
                     </td>
-           
+
                 </tr>
             }
         </table>
-        <p>Frai de livraison: @Model.AmountDelivery €</p>
-        <p>Somme HT: @facture.ExclVat €</p>
-        <p>Motant TVA: @facture.Vat €</p>
-        <p>Total TTC: @facture.InclVat €</p>
+        <p><strong>Frais De livraison</strong> : @Model.AmountDelivery €</p>
+        <p><strong>Somme HT</strong> : @facture.ExclVat €</p>
+        <p><strong>Motant TVA</strong> : @facture.Vat €</p>
+        <p><strong>Total TTC</strong> : @facture.InclVat €</p>
         <hr />
     </div>
     <div style="text-align:center;">
-        <h5>AIJIA Société Anonyme SA</h5>
-        <h5>Siege Social Grenoble 38000</h5>
-        <h5>Telephone: 0626585713 </h5>
-        <h5>Email: aijia@aijia.com</h5>
+        <h5><strong>AIJIA</strong> : Société Anonyme SA</h5>
+        <h5><strong>Siège Social</strong> : Grenoble 38000</h5>
+        <h5><strong>Telephone</strong> : 0626585713 </h5>
+        <h5><strong>Email</strong> : aijia@aijia.com</h5>
     </div>
 </div>
 

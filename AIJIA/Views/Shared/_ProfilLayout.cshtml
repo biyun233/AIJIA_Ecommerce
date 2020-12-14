@@ -1,4 +1,9 @@
 ﻿@using AIJIA.Models;
+@using Microsoft.AspNet.Identity;
+@using System.Security.Claims;
+@{
+    var user = (System.Security.Claims.ClaimsIdentity)User.Identity;
+}
 <!DOCTYPE html>
 <html>
 <head>
@@ -76,7 +81,6 @@
                     <li>@Html.ActionLink("Déco", "Articles_type", "Articles", routeValues: new { type = "Déco" }, htmlAttributes: null)</li>
                     <li>@Html.ActionLink("Jardin", "Articles_type", "Articles", routeValues: new { type = "Jardin" }, htmlAttributes: null)</li>
                     <li>@Html.ActionLink("Meubles", "Articles_type", "Articles", routeValues: new { type = "Meubles" }, htmlAttributes: null)</li>
-                    <li>@Html.ActionLink("Admin", "Admin", "Admin")</li>
                 </ul>
             </div>
         </div>
@@ -87,7 +91,7 @@
                 <a href="/Manage/Index">Mon Profil</a>
             </div>
             <div class="profil_item">
-                <p>Mes Commandes</p>
+                @Html.ActionLink("Mes Commandes", "UserOrders", "Orders", routeValues: new { UserID = user.GetUserId() }, htmlAttributes: null)
             </div>
             <div class="profil_item">
                 <a href="/Manage/ChangePassword">Changer Mot de passe</a>

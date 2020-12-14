@@ -9,7 +9,8 @@
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
     {
         @Html.AntiForgeryToken()
-        if (@user.FindFirstValue("IsAdmin") == "false")
+
+        if (@user.FindFirstValue("IsAdmin") == "User")
         {
             <a href="/Manage/Index" title="Manage" class="compte_icon">
                 <span class="glyphicon glyphicon-user user"></span>
